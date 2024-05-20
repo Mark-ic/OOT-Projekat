@@ -12,7 +12,16 @@
                 
             </TabItem>
             <TabItem Header="Spiskovi" FontSize="20px">
-                
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="1">
+                        <Image Source="/teren_mapa/teren.png" Stretch="Fill"/>
+                    </Grid>
+                </Grid>
             </TabItem>
             <TabItem Header="Informacije" FontSize="20px">
                 
