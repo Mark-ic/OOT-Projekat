@@ -5,8 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekat"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="EVROLIGA" Height="800" Width="1000">
     <Grid>
-
+        <TabControl>
+            <TabItem Header="Kosarkasi" FontSize="20px">
+                
+            </TabItem>
+            <TabItem Header="Spiskovi" FontSize="20px">
+                
+            </TabItem>
+            <TabItem Header="Informacije" FontSize="20px">
+                
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>
