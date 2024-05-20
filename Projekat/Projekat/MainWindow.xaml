@@ -30,8 +30,15 @@
                         <ColumnDefinition Width="2*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
 
+                    <Grid Grid.Column="0">
+                        <TreeView>
+                            
+                        </TreeView>
+                    </Grid>
                     <Grid Grid.Column="1">
-                        <Image Source="/teren_mapa/evropa.jpg" Stretch="Uniform"/>
+                        <Image Source="/teren_mapa/Evropa.png" />
+
+                        <!--<Image Source="/teren_mapa/Evropa.png" Stretch="Uniform"/> -->
                     </Grid>
                 </Grid>
             </TabItem>

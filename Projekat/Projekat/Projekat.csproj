@@ -8,4 +8,12 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="teren_mapa\Evropa.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="teren_mapa\Evropa.png" />
+  </ItemGroup>
+
 </Project>
