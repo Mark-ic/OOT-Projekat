@@ -1,18 +1,18 @@
-1|ALBA Berlin|Berlin|/logo_kluba/alba
-2|Anadolu Efes|Instanbul|/logo_kluba/anadolu
-3|AS Monaco|Monako|/logo_kluba/monaco
-4|Baskonia Vitoria-Gasteiz|Vitoria|/logo_kluba/baskonia
-5|Crvena Zvezda|Beograd|/logo_kluba/zvezda
-6|Emporio Armani Milan|Milano|/logo_kluba/milano
-7|Barcelona|Barselona|/logo_kluba/barcelona
-8|Bayern Munich|Minhen|/logo_kluba/bayern
-9|Fenerbahce|Instanbul|/logo_kluba/fener
-10|LDLC ASVEL|Vilerban|/logo_kluba/asvel
-11|Maccabi Tel Aviv|Tel Aviv|/logo_kluba/maccabi
-12|Olympiacos Piraeus|Pirej|/logo_kluba/olympiakos
-13|Panathinaikos|Atina|/logo_kluba/panate
-14|Partizan|Beograd|/logo_kluba/partizan
-15|Real Madrid|Madrid|/logo_kluba/real
-16|Valencia Basket|Valensija|/logo_kluba/valensija
-17|Virtus Bologna|Bolonja|/logo_kluba/virtus
-18|Zalgiris Kaunas|Kaunas|/logo_kluba/zalgiris
+1|ALBA Berlin|Berlin|/logo_kluba/alba.png
+2|Anadolu Efes|Instanbul|/logo_kluba/anadolu.png
+3|AS Monaco|Monako|/logo_kluba/monaco.png
+4|Baskonia Vitoria-Gasteiz|Vitoria|/logo_kluba/baskonia.png
+5|Crvena Zvezda|Beograd|/logo_kluba/zvezda.png
+6|Emporio Armani Milan|Milano|/logo_kluba/milano.png
+7|Barcelona|Barselona|/logo_kluba/barcelona.png
+8|Bayern Munich|Minhen|/logo_kluba/bayern.png
+9|Fenerbahce|Instanbul|/logo_kluba/fener.png
+10|LDLC ASVEL|Vilerban|/logo_kluba/asvel.png
+11|Maccabi Tel Aviv|Tel Aviv|/logo_kluba/maccabi.png
+12|Olympiacos Piraeus|Pirej|/logo_kluba/olympiakos.png
+13|Panathinaikos|Atina|/logo_kluba/panate.png
+14|Partizan|Beograd|/logo_kluba/partizan.png
+15|Real Madrid|Madrid|/logo_kluba/real.png
+16|Valencia Basket|Valensija|/logo_kluba/valensija.png
+17|Virtus Bologna|Bolonja|/logo_kluba/virtus.png
+18|Zalgiris Kaunas|Kaunas|/logo_kluba/zalgiris.png
