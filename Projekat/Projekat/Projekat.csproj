@@ -9,11 +9,66 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="slike_igraca\bolmaro.jpeg" />
+    <None Remove="slike_igraca\campazzo.jpeg" />
+    <None Remove="slike_igraca\clyburn.jpg" />
+    <None Remove="slike_igraca\colson.jpeg" />
+    <None Remove="slike_igraca\guduric.jpeg" />
+    <None Remove="slike_igraca\howard.jpg" />
+    <None Remove="slike_igraca\james.png" />
+    <None Remove="slike_igraca\laprovitola.jpeg" />
+    <None Remove="slike_igraca\larkin.jpg" />
+    <None Remove="slike_igraca\lauverne.jpeg" />
+    <None Remove="slike_igraca\lessort.jpeg" />
+    <None Remove="slike_igraca\marinkovic.jpeg" />
+    <None Remove="slike_igraca\milutinov.jpeg" />
+    <None Remove="slike_igraca\mirotic.jpeg" />
+    <None Remove="slike_igraca\nedovic.png" />
+    <None Remove="slike_igraca\nepoznat.png" />
+    <None Remove="slike_igraca\ojeleye.jpeg" />
+    <None Remove="slike_igraca\petrusev.jpeg" />
+    <None Remove="slike_igraca\shengelia.jpeg" />
+    <None Remove="slike_igraca\smailagic.jpeg" />
+    <None Remove="slike_igraca\teodosic.jpg" />
+    <None Remove="slike_igraca\thiemann.jpg" />
+    <None Remove="slike_igraca\topic.png" />
+    <None Remove="slike_igraca\ulanovas.jpeg" />
+    <None Remove="slike_igraca\vildoza.jpeg" />
+    <None Remove="teren_mapa\evroliga.jpg" />
+    <None Remove="teren_mapa\evroliga.png" />
     <None Remove="teren_mapa\Evropa.png" />
+    <None Remove="teren_mapa\teren.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="slike_igraca\bolmaro.jpeg" />
+    <Resource Include="slike_igraca\campazzo.jpeg" />
+    <Resource Include="slike_igraca\clyburn.jpg" />
+    <Resource Include="slike_igraca\colson.jpeg" />
+    <Resource Include="slike_igraca\guduric.jpeg" />
+    <Resource Include="slike_igraca\howard.jpg" />
+    <Resource Include="slike_igraca\james.png" />
+    <Resource Include="slike_igraca\laprovitola.jpeg" />
+    <Resource Include="slike_igraca\larkin.jpg" />
+    <Resource Include="slike_igraca\lauverne.jpeg" />
+    <Resource Include="slike_igraca\lessort.jpeg" />
+    <Resource Include="slike_igraca\marinkovic.jpeg" />
+    <Resource Include="slike_igraca\milutinov.jpeg" />
+    <Resource Include="slike_igraca\mirotic.jpeg" />
+    <Resource Include="slike_igraca\nedovic.png" />
+    <Resource Include="slike_igraca\nepoznat.png" />
+    <Resource Include="slike_igraca\ojeleye.jpeg" />
+    <Resource Include="slike_igraca\petrusev.jpeg" />
+    <Resource Include="slike_igraca\shengelia.jpeg" />
+    <Resource Include="slike_igraca\smailagic.jpeg" />
+    <Resource Include="slike_igraca\teodosic.jpg" />
+    <Resource Include="slike_igraca\thiemann.jpg" />
+    <Resource Include="slike_igraca\topic.png" />
+    <Resource Include="slike_igraca\ulanovas.jpeg" />
+    <Resource Include="slike_igraca\vildoza.jpeg" />
+    <Resource Include="teren_mapa\evroliga.png" />
     <Resource Include="teren_mapa\Evropa.png" />
+    <Resource Include="teren_mapa\teren.png" />
   </ItemGroup>
 
 </Project>

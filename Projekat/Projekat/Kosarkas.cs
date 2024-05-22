@@ -111,7 +111,7 @@ namespace Projekat
 
         }
 
-        public int BR_POENA
+        public double BR_POENA
         {
             get { return br_poena; }
             set
@@ -192,6 +192,11 @@ namespace Projekat
                 }
             }
 
+        }
+        public override string? ToString()
+        {
+            string str = JMBG + "|" + IME + "|" + PREZIME + "|" + POZICIJA + "|" + NACIONALNOST + "|" + BR_DRESA + "|" + BR_UTAKMICA + "|" + BR_POENA + "|" + SLIKA;
+            return str;
         }
     }
 }

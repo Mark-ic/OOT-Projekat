@@ -19,6 +19,11 @@ namespace Projekat
         public MainWindow()
         {
             InitializeComponent();
+            Kosarkasi kosarkasi = new Kosarkasi();
+
+            kosarkasi.import("igraci.txt");
+            ilKosarkasa.ItemsSource = kosarkasi.KOSARKASI;
+
         }
     }
 }
