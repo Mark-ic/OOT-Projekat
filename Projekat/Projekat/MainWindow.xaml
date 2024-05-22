@@ -11,18 +11,53 @@
             <TabItem Header="Kosarkasi" FontSize="20px">
                 
             </TabItem>
-            <TabItem Header="Spiskovi" FontSize="20px">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                        <ColumnDefinition Width="2*"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
+             </TabItem>
+                 <TabItem Header="Sastavi tim" FontSize="20px" Height="31" VerticalAlignment="Top" Background="LightYellow">
+                     <Grid Background="LightYellow">
+                         <Grid.ColumnDefinitions>
+                             <ColumnDefinition Width="*"></ColumnDefinition>
+                             <ColumnDefinition Width="2*"></ColumnDefinition>
+                         </Grid.ColumnDefinitions>
 
-                    <Grid Grid.Column="1">
-                        <Image Source="/teren_mapa/teren.png" Stretch="Fill"/>
-                    </Grid>
-                </Grid>
-            </TabItem>
+                         <Grid Grid.Column="1">
+                             <Image Source="/teren_mapa/teren.png" Stretch="Fill"/>
+                         </Grid>
+
+                         <Grid Grid.Column="0">
+                             <Grid.RowDefinitions>
+                                 <RowDefinition Height="*"></RowDefinition>
+                                 <RowDefinition Height="*"></RowDefinition>
+                                 <RowDefinition Height="20*"></RowDefinition>
+                             </Grid.RowDefinitions>
+                             <TextBlock Grid.Row="1">Kosarkasi:</TextBlock>
+                             <ListView Background="LightYellow" Grid.Row="2" Name="ilKosarkasa">
+                                 <ListView.ItemTemplate>
+                                     <DataTemplate>
+                                         <Grid>
+                                             <Grid.ColumnDefinitions>
+                                                 <ColumnDefinition Width="*"></ColumnDefinition>
+                                                 <ColumnDefinition Width="*"></ColumnDefinition>
+                                                 <ColumnDefinition Width="*"></ColumnDefinition>
+                                                 <ColumnDefinition Width="*"></ColumnDefinition>
+                                                 <ColumnDefinition Width="*"></ColumnDefinition>
+                                                 <ColumnDefinition Width="*"></ColumnDefinition>
+                                                 <ColumnDefinition Width="*"></ColumnDefinition>
+                                             </Grid.ColumnDefinitions>
+                                             <TextBlock Grid.Column="0" Text="{Binding BR_DRESA}"></TextBlock>
+                                             <TextBlock Grid.Column="1" Text=" "></TextBlock>
+                                             <TextBlock Grid.Column="2" Text="{Binding IME}"></TextBlock>
+                                             <TextBlock Grid.Column="3" Text=" "></TextBlock>
+                                             <TextBlock Grid.Column="4" Text="{Binding PREZIME}"></TextBlock>
+                                             <TextBlock Grid.Column="5" Text=" "></TextBlock>
+                                             <TextBlock Grid.Column="6" Text="{Binding POZICIJA}"></TextBlock>
+                                         </Grid>
+                         
+                                     </DataTemplate>
+                                 </ListView.ItemTemplate>
+                             </ListView>
+                         </Grid>
+                     </Grid>
+                 </TabItem>
             <TabItem Header="Informacije" FontSize="20px">
                 <Grid>
                     <Grid.ColumnDefinitions>
