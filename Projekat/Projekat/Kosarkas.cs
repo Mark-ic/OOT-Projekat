@@ -9,14 +9,14 @@ namespace Projekat
 {
     public class Kosarkas : INotifyPropertyChanged
     {
-        private int jmbg;
+        private long jmbg;
         private string ime;
         private string prezime;
         private string pozicija;
         private string nacionalnost;
         private int br_dresa;
         private int br_utakmica;
-        private int br_poena;
+        private double br_poena;
         private string slika;
 
 
@@ -45,10 +45,10 @@ namespace Projekat
 
         public Kosarkas
             (
-            int jmbg, string ime, string prezime,
+            long jmbg, string ime, string prezime,
             string pozicija, string nacionalnost,
             int br_dresa, int br_utakmica,
-            int br_poena, string slika
+            double br_poena, string slika
             )
         {
             this.jmbg = jmbg;
@@ -59,10 +59,17 @@ namespace Projekat
             this.br_dresa = br_dresa;
             this.br_utakmica = br_utakmica;
             this.br_poena = br_poena;
-            this.slika = slika;
+            if (slika != "")
+            {
+                this.slika = slika;
+            }
+            else
+            {
+                this.slika = "/slike_igraca/nepoznat.png";
+            }
         }
 
-        public int JMBG 
+        public long JMBG 
         { 
             get { return jmbg; } 
             set 
