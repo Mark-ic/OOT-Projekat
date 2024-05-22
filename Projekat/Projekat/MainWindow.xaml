@@ -12,6 +12,7 @@
                 
             </TabItem>
              </TabItem>
+                <!--Drugi tab-->
                  <TabItem Header="Sastavi tim" FontSize="20px" Height="31" VerticalAlignment="Top" Background="LightYellow">
                      <Grid Background="LightYellow">
                          <Grid.ColumnDefinitions>
@@ -58,6 +59,7 @@
                          </Grid>
                      </Grid>
                  </TabItem>
+                <!--Treci tab-->>
             <TabItem Header="Informacije" FontSize="20px">
                 <Grid>
                     <Grid.ColumnDefinitions>
