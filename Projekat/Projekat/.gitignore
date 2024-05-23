@@ -20,6 +20,7 @@ mono_crash.*
 bin\Debug\net6.0-windows\*.exe
 bin\Debug\net6.0-windows\*.dll
 bin\Debug\net6.0-windows\*.pdb
+bin\Debug\net6.0-windows\*.json
 
 [Dd]ebug/
 [Dd]ebugPublic/
