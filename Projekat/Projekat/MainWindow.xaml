@@ -22,7 +22,7 @@
                          </Grid.ColumnDefinitions>
 
                          <Grid Grid.Column="1">
-                             <Image Source="/teren_mapa/teren.png" Stretch="Fill"/>
+                             <Image Source="/teren_mapa/teren.png" Stretch="Fill" Name="Teren"/>
                          </Grid>
 
                          <Grid Grid.Column="0">
