@@ -17,6 +17,10 @@
 mono_crash.*
 
 # Build results
+bin\Debug\net6.0-windows\*.exe
+bin\Debug\net6.0-windows\*.dll
+bin\Debug\net6.0-windows\*.pdb
+
 [Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/
