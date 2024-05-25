@@ -20,11 +20,16 @@ namespace Projekat
         {
             InitializeComponent();
             Kosarkasi kosarkasi = new Kosarkasi();
+            Klub klub = new Klub();
+
 
             kosarkasi.import("igraci.txt");
             ilKosarkasa.ItemsSource = kosarkasi.KOSARKASI;
             TabelaKosarkasi.ItemsSource=kosarkasi.KOSARKASI;
 
+            klub.import("timovi.txt");
+            Stablo.ItemsSource = klub.KLUBOVI;
+            
         }
 
         private void export_Click(object sender, RoutedEventArgs e)
@@ -33,6 +38,18 @@ namespace Projekat
 
             kosarkasi.import("igraci.txt");
             kosarkasi.exportTabele("tabela.csv");
+        }
+
+        private void Stablo_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            if (e.NewValue is Klub selectedKlub)
+            {
+                var klub = DataContext as Klub;
+                if (klub != null)
+                {
+                    klub.OdabraniKlub = selectedKlub;
+                }
+            }
         }
     }
 }

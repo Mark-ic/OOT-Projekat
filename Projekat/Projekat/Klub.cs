@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +19,22 @@ namespace Projekat
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+        private Klub _odabraniKlub;
+        public ObservableCollection<Klub> Klubovi { get; set; }
+
+        public Klub OdabraniKlub
+        {
+            get { return _odabraniKlub; }
+            set
+            {
+                if (_odabraniKlub != value)
+                {
+                    _odabraniKlub = value;
+                    NotifyPropertyChanged(nameof(OdabraniKlub));
+                }
+            }
+        }
+
         private void NotifyPropertyChanged(string v)
         {
             if (this.PropertyChanged != null)
@@ -29,6 +47,8 @@ namespace Projekat
             this.naziv=string.Empty;
             this.mesto=string.Empty;    
             this.logo=string.Empty;
+            OdabraniKlub = null;
+            Klubovi=new ObservableCollection<Klub>();
 
         }
 
@@ -94,5 +114,62 @@ namespace Projekat
             }
 
         }
+
+        public void import(string file)
+        {
+            int id;
+            StreamReader sr = null;
+            string linija;
+            
+            try
+            {
+                sr = new StreamReader(file);
+
+                while ((linija = sr.ReadLine()) != null)
+                {
+                    string[] delovi = linija.Split('|');
+                    id = int.Parse(delovi[0]);
+                    if (provera(id))
+                    {
+                        Klubovi.Add(new Klub(id, delovi[1], delovi[2], delovi[3]));
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                if (sr != null) sr.Close();
+            }
+        }
+
+        public bool provera(int id)
+        {
+            foreach (Klub klub in Klubovi)
+            {
+                if (klub.ID == id)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public ObservableCollection<Klub> KLUBOVI
+        {
+            get { return Klubovi; }
+            set
+            {
+                if (this.Klubovi != value)
+                {
+                    this.Klubovi = value;
+                    this.NotifyPropertyChanged("KOSARKSAI");
+                }
+            }
+        }
+
     }
 }
