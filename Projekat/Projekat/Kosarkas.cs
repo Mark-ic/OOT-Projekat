@@ -198,5 +198,11 @@ namespace Projekat
             string str = JMBG + "|" + IME + "|" + PREZIME + "|" + POZICIJA + "|" + NACIONALNOST + "|" + BR_DRESA + "|" + BR_UTAKMICA + "|" + BR_POENA + "|" + SLIKA;
             return str;
         }
+
+        public string zaTabelu()
+        {
+            string str = IME + "," + PREZIME + "," + POZICIJA + "," + BR_POENA;
+            return str;
+        }
     }
 }

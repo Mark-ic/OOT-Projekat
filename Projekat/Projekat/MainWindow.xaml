@@ -10,7 +10,47 @@
         Background="Black">
     <Grid>
         <TabControl>
-            <TabItem Header="Kosarkasi" FontSize="20px">
+            <TabItem Header="Spisak kosarkasa" FontSize="20px" Background="LightCyan">
+                <Grid Background="LightCyan">
+                    
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="6*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left">Pretrazi igraca</TextBlock>
+                        <TextBox Name="searchBox" Grid.Row="1" Grid.Column="0" />
+                        <Button  Name="search" Grid.Row="1" Grid.Column="1" Margin="5 0 5 0" >Pretrazi</Button>
+                        <Button  Name="export" Grid.Row="2" Grid.Column="2" Margin="50 0 5 5" Click="export_Click" >Export tabele</Button>
+                    </Grid>
+                    <DataGrid Grid.Row="1" x:Name="TabelaKosarkasi" IsReadOnly="True" GridLinesVisibility="Horizontal" AutoGenerateColumns="False" Grid.ColumnSpan="2">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Broj" Binding="{Binding BR_DRESA}"/>
+                            <DataGridTextColumn Header="Ime" Binding="{Binding IME}"/>
+                            <DataGridTextColumn Header="Prezime" Binding="{Binding PREZIME}"/>
+                            <DataGridTextColumn Header="Nacionalnost" Binding="{Binding NACIONALNOST}"/>
+                            <DataGridTextColumn Header="Pozicija" Binding="{Binding POZICIJA}"/>
+                            <DataGridTextColumn Header="Broj utakmica" Binding="{Binding BR_UTAKMICA}"/>
+                            <DataGridTextColumn Header="Prosek poena" Binding="{Binding BR_POENA}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+
+
+
+
+
+
 
             </TabItem>
             <!--Drugi tab-->

@@ -107,5 +107,29 @@ namespace Projekat
                 if(sw != null) sw.Close();
             }
         }
+
+        public void exportTabele(string file)
+        {
+            StreamWriter sw = null;
+            try
+            {
+                sw = new StreamWriter(file);
+                sw.WriteLine("Ime ,Prezime ,Pozicija ,Broj poena");
+                foreach (Kosarkas k in lista)
+                {
+                    sw.WriteLine(k.zaTabelu());
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            finally
+            {
+                if (sw != null) sw.Close();
+            }
+
+        }
+        
     }
 }

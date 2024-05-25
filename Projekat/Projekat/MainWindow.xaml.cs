@@ -23,7 +23,16 @@ namespace Projekat
 
             kosarkasi.import("igraci.txt");
             ilKosarkasa.ItemsSource = kosarkasi.KOSARKASI;
+            TabelaKosarkasi.ItemsSource=kosarkasi.KOSARKASI;
 
+        }
+
+        private void export_Click(object sender, RoutedEventArgs e)
+        {
+            Kosarkasi kosarkasi = new Kosarkasi();
+
+            kosarkasi.import("igraci.txt");
+            kosarkasi.exportTabele("tabela.csv");
         }
     }
 }
