@@ -12,12 +12,16 @@
         <TabControl>
             <TabItem Header="Spisak kosarkasa" FontSize="20px" Background="LightCyan">
                 <Grid Background="LightCyan">
-                    
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="345*"/>
+                        <ColumnDefinition Width="649*"/>
+                    </Grid.ColumnDefinitions>
+
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="6*"/>
                     </Grid.RowDefinitions>
-                    <Grid Grid.Row="0" >
+                    <Grid Grid.Row="0" Grid.ColumnSpan="2" >
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"></RowDefinition>
                             <RowDefinition Height="*"></RowDefinition>
@@ -33,7 +37,7 @@
                         <Button  Name="search" Grid.Row="1" Grid.Column="1" Margin="5 0 5 0" >Pretrazi</Button>
                         <Button  Name="export" Grid.Row="2" Grid.Column="2" Margin="50 0 5 5" Click="export_Click" >Export tabele</Button>
                     </Grid>
-                    <DataGrid Grid.Row="1" x:Name="TabelaKosarkasi" IsReadOnly="True" GridLinesVisibility="Horizontal" AutoGenerateColumns="False" Grid.ColumnSpan="2">
+                    <DataGrid x:Name="TabelaKosarkasi" IsReadOnly="True" GridLinesVisibility="Horizontal" AutoGenerateColumns="False" Grid.ColumnSpan="2" Margin="0,106,0,0" Grid.RowSpan="2">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Broj" Binding="{Binding BR_DRESA}"/>
                             <DataGridTextColumn Header="Ime" Binding="{Binding IME}"/>
@@ -56,55 +60,55 @@
             <!--Drugi tab-->
             <TabItem Header="Sastavi tim" FontSize="20px" Height="31" VerticalAlignment="Top" Background="LightYellow">
                 <Grid Background="LightYellow">
-                         <Grid.ColumnDefinitions>
-                             <ColumnDefinition Width="*"></ColumnDefinition>
-                             <ColumnDefinition Width="2*"></ColumnDefinition>
-                         </Grid.ColumnDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
 
-                         <Grid Grid.Column="1">
-                             <Image Source="/teren_mapa/teren.png" Stretch="Fill" Name="Teren"/>
-                         </Grid>
+                    <Grid Grid.Column="1">
+                        <Image Source="/teren_mapa/teren.png" Stretch="Fill" Name="Teren"/>
+                    </Grid>
 
-                         <Grid Grid.Column="0">
-                             <Grid.RowDefinitions>
-                                 <RowDefinition Height="*"></RowDefinition>
-                                 <RowDefinition Height="*"></RowDefinition>
-                                 <RowDefinition Height="20*"></RowDefinition>
-                             </Grid.RowDefinitions>
-                             <TextBlock Grid.Row="1">Kosarkasi:</TextBlock>
+                    <Grid Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="20*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="1">Kosarkasi:</TextBlock>
                         <ListView Background="LightYellow" Grid.Row="2" Name="ilKosarkasa">
-                                 <ListView.ItemTemplate>
-                                     <DataTemplate>
-                                         <Grid>
-                                             <Grid.ColumnDefinitions>
-                                                 <ColumnDefinition Width="*"></ColumnDefinition>
-                                                 <ColumnDefinition Width="*"></ColumnDefinition>
-                                                 <ColumnDefinition Width="*"></ColumnDefinition>
-                                                 <ColumnDefinition Width="*"></ColumnDefinition>
-                                                 <ColumnDefinition Width="*"></ColumnDefinition>
-                                                 <ColumnDefinition Width="*"></ColumnDefinition>
-                                                 <ColumnDefinition Width="*"></ColumnDefinition>
-                                                 <ColumnDefinition Width="*"></ColumnDefinition>
-                                                 <ColumnDefinition Width="*"></ColumnDefinition>
-                                             </Grid.ColumnDefinitions>
-                                             
-                                             <Image Grid.Column="0" Source="{Binding SLIKA}" Height="30" Width="30"></Image>
-                                             
-                                             <TextBlock Grid.Column="1" Text=" "></TextBlock>
-                                             <TextBlock Grid.Column="2" Text="{Binding BR_DRESA}"></TextBlock>
-                                             <TextBlock Grid.Column="3" Text=" "></TextBlock>
-                                             <TextBlock Grid.Column="4" Text="{Binding IME}"></TextBlock>
-                                             <TextBlock Grid.Column="5" Text=" "></TextBlock>
-                                             <TextBlock Grid.Column="6" Text="{Binding PREZIME}"></TextBlock>
-                                             <TextBlock Grid.Column="7" Text=" "></TextBlock>
-                                             <TextBlock Grid.Column="8" Text="{Binding POZICIJA}"></TextBlock>
-                                         </Grid>
-                         
-                                     </DataTemplate>
-                                 </ListView.ItemTemplate>
-                             </ListView>
-                         </Grid>
-                     </Grid>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Image Grid.Column="0" Source="{Binding SLIKA}" Height="30" Width="30"></Image>
+
+                                        <TextBlock Grid.Column="1" Text=" "></TextBlock>
+                                        <TextBlock Grid.Column="2" Text="{Binding BR_DRESA}"></TextBlock>
+                                        <TextBlock Grid.Column="3" Text=" "></TextBlock>
+                                        <TextBlock Grid.Column="4" Text="{Binding IME}"></TextBlock>
+                                        <TextBlock Grid.Column="5" Text=" "></TextBlock>
+                                        <TextBlock Grid.Column="6" Text="{Binding PREZIME}"></TextBlock>
+                                        <TextBlock Grid.Column="7" Text=" "></TextBlock>
+                                        <TextBlock Grid.Column="8" Text="{Binding POZICIJA}"></TextBlock>
+                                    </Grid>
+
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Grid>
+                </Grid>
             </TabItem>
             <!--Treci tab-->
             <TabItem Header="Informacije" FontSize="20px">
@@ -114,24 +118,39 @@
                         <ColumnDefinition Width="2*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
 
-                    <Grid Grid.Column="0">
-                        <TreeView x:Name="Stablo" ItemsSource="{Binding Klubovi}" SelectedItemChanged="Stablo_SelectedItemChanged" Background="LightSkyBlue">
-                            <TreeView.ItemTemplate>
-                                <HierarchicalDataTemplate ItemsSource="{Binding Klubovi}">
-                                    <Expander Header="{Binding NAZIV}">
-                                        <StackPanel>
-                                            <TextBlock Text="{Binding NAZIV}" FontSize="16" FontWeight="Bold" Margin="5"/>
-                                            <TextBlock Text="{Binding MESTO}" Margin="5" FontWeight="Bold"/>
-                                        </StackPanel>
-                                    </Expander>
-                                </HierarchicalDataTemplate>
-                            </TreeView.ItemTemplate>
-                        </TreeView>
-                    </Grid>
-                    <Grid Grid.Column="1">
-                        <Image Source="/teren_mapa/Evropa.png" />
+                        <Grid Grid.Column="0">
+                            <TreeView x:Name="Stablo"  SelectedItemChanged="Stablo_SelectedItemChanged" PreviewMouseLeftButtonDown="Stablo_PreviewMouseLeftButtonDown" MouseMove="Stablo_MouseMove" Background="LightSkyBlue">
+                                <TreeView.ItemTemplate>
+                                    <HierarchicalDataTemplate ItemsSource="{Binding Klubovi}">
+                                        <Expander Header="{Binding NAZIV}">
+                                            <StackPanel>
+                                                <TextBlock Text="{Binding MESTO}" Margin="5" FontWeight="Bold"/>
+                                            </StackPanel>
+                                        </Expander>
+                                    </HierarchicalDataTemplate>
+                                </TreeView.ItemTemplate>
+                            </TreeView>
+                        </Grid>
+                        <Grid Grid.Column="1" Margin="10">
+                        <Canvas HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0" x:Name="MapCanvas" IsHitTestVisible="True" AllowDrop="True" DragEnter="MapCanvas_DragEnter" Drop="MapCanvas_Drop">
+                            <Canvas.Background>
+                                <ImageBrush ImageSource="/teren_mapa/Evropa.png"/>
+                            </Canvas.Background>
+                            <ItemsControl ItemsSource="{Binding KluboviNaMapi}">
+                                <ItemsControl.ItemContainerStyle>
+                                    <Style TargetType="ContentPresenter">
+                                        <Setter Property="Canvas.Left" Value="{Binding X}" />
+                                        <Setter Property="Canvas.Top" Value="{Binding Y}" />
+                                    </Style>
+                                </ItemsControl.ItemContainerStyle>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Image Source="{Binding LOGO}" Width="30" Height="30"/>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </Canvas>
 
-                        <!--<Image Source="/teren_mapa/Evropa.png" Stretch="Uniform"/> -->
                     </Grid>
                 </Grid>
             </TabItem>

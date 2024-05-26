@@ -9,6 +9,24 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="logo_kluba\alba.png" />
+    <None Remove="logo_kluba\anadolu.png" />
+    <None Remove="logo_kluba\asvel.png" />
+    <None Remove="logo_kluba\barcelona.png" />
+    <None Remove="logo_kluba\baskonia.png" />
+    <None Remove="logo_kluba\bayern.png" />
+    <None Remove="logo_kluba\fener.png" />
+    <None Remove="logo_kluba\maccabi.png" />
+    <None Remove="logo_kluba\milano.png" />
+    <None Remove="logo_kluba\monaco.png" />
+    <None Remove="logo_kluba\olympiakos.png" />
+    <None Remove="logo_kluba\panate.png" />
+    <None Remove="logo_kluba\partizan.png" />
+    <None Remove="logo_kluba\real.png" />
+    <None Remove="logo_kluba\valensija.png" />
+    <None Remove="logo_kluba\virtus.png" />
+    <None Remove="logo_kluba\zalgiris.png" />
+    <None Remove="logo_kluba\zvezda.png" />
     <None Remove="slike_igraca\bolmaro.jpeg" />
     <None Remove="slike_igraca\campazzo.jpeg" />
     <None Remove="slike_igraca\clyburn.jpg" />
@@ -41,6 +59,24 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="logo_kluba\alba.png" />
+    <Resource Include="logo_kluba\anadolu.png" />
+    <Resource Include="logo_kluba\asvel.png" />
+    <Resource Include="logo_kluba\barcelona.png" />
+    <Resource Include="logo_kluba\baskonia.png" />
+    <Resource Include="logo_kluba\bayern.png" />
+    <Resource Include="logo_kluba\fener.png" />
+    <Resource Include="logo_kluba\maccabi.png" />
+    <Resource Include="logo_kluba\milano.png" />
+    <Resource Include="logo_kluba\monaco.png" />
+    <Resource Include="logo_kluba\olympiakos.png" />
+    <Resource Include="logo_kluba\panate.png" />
+    <Resource Include="logo_kluba\partizan.png" />
+    <Resource Include="logo_kluba\real.png" />
+    <Resource Include="logo_kluba\valensija.png" />
+    <Resource Include="logo_kluba\virtus.png" />
+    <Resource Include="logo_kluba\zalgiris.png" />
+    <Resource Include="logo_kluba\zvezda.png" />
     <Resource Include="slike_igraca\bolmaro.jpeg" />
     <Resource Include="slike_igraca\campazzo.jpeg" />
     <Resource Include="slike_igraca\clyburn.jpg" />
