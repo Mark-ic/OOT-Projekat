@@ -282,7 +282,11 @@ namespace Projekat
                 Klub klub1 = e.Data.GetData("myFormat") as Klub;
                 if (klub1 != null)
                 {
-                    viewModel.Klubovi.Add(klub1);
+                    if (!viewModel.Klubovi.Contains(klub1))
+                    {
+                        viewModel.Klubovi.Add(klub1);
+
+                    }
                     viewModel.KluboviNaMapi.Remove(klub1);
                     Mouse.OverrideCursor = Cursors.Arrow;
 
