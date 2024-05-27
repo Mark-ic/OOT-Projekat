@@ -31,7 +31,7 @@ namespace Projekat
                 if (this.lista != value)
                 {
                     this.lista = value;
-                    this.NotifyPropertyChanged("KOSARKASI");
+                    this.NotifyPropertyChanged(nameof(KOSARKASI));
                 }
             }
         }
