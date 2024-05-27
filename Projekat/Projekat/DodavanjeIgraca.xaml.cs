@@ -50,6 +50,14 @@ namespace Projekat
                     {
                         MessageBox.Show("Uspesno ste uneli igraca");
                         kosarkasi.export("igraci.txt");
+                        Ime.Text = "";
+                        Prezime.Text = "";
+                        Pozicija.Text = "";
+                        Nacionalnost.Text = "";
+                        Br_utakmica.Text = "";
+                        Poeni.Text = "";  JMBG.Text = "";
+                        Br_dresa.Text = "";
+                        Slika.Text = "";
                     }
                     else
                     {

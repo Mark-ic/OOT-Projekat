@@ -137,19 +137,6 @@
                             <Canvas.Background>
                                 <ImageBrush ImageSource="/teren_mapa/Evropa.png"/>
                             </Canvas.Background>
-                            <ItemsControl ItemsSource="{Binding KluboviNaMapi}">
-                                <ItemsControl.ItemContainerStyle>
-                                    <Style TargetType="ContentPresenter">
-                                        <Setter Property="Canvas.Left" Value="{Binding X}" />
-                                        <Setter Property="Canvas.Top" Value="{Binding Y}" />
-                                    </Style>
-                                </ItemsControl.ItemContainerStyle>
-                                <ItemsControl.ItemTemplate>
-                                    <DataTemplate>
-                                        <Image Source="{Binding LOGO}" Width="30" Height="30"/>
-                                    </DataTemplate>
-                                </ItemsControl.ItemTemplate>
-                            </ItemsControl>
                         </Canvas>
 
                     </Grid>

@@ -21,7 +21,7 @@ namespace Projekat
         private Image draggedElement;
         private MainViewModel viewModel;
         Point startPoint;
-
+        Klub klub;
         public MainWindow()
         {
             InitializeComponent();
@@ -29,7 +29,7 @@ namespace Projekat
 
 
             Kosarkasi kosarkasi = new Kosarkasi();
-            Klub klub = new Klub();
+             klub= new Klub();
 
 
             kosarkasi.import("igraci.txt");
@@ -37,8 +37,9 @@ namespace Projekat
             TabelaKosarkasi.ItemsSource=kosarkasi.KOSARKASI;
 
             klub.Import("timovi.txt");
-            Stablo.ItemsSource = klub.KLUBOVI;
             viewModel = new MainViewModel();
+            viewModel.Klubovi = klub.Klubovi;
+            Stablo.ItemsSource = viewModel.Klubovi;
             this.DataContext = viewModel;
         }
 
@@ -132,32 +133,87 @@ namespace Projekat
 
         }
 
-
         private void MapCanvas_Drop(object sender, DragEventArgs e)
         {
-            
-
             if (e.Data.GetDataPresent("myFormat"))
             {
-                Klub klub = e.Data.GetData("myFormat") as Klub;
-
+                Klub klub1 = e.Data.GetData("myFormat") as Klub;
                 var kluboviTreeView = Stablo.SelectedItem as Klub;
-                if (kluboviTreeView != null)
+
+                if (klub1 != null)
                 {
-                    kluboviTreeView.UkloniKlub(klub);
+                  
+
+                    var canvas = sender as Canvas;
+                    Point pozicija = e.GetPosition(canvas);
+
+                    klub1.X = pozicija.X;
+                    klub1.Y = pozicija.Y;
+                   
+                    Image image = new Image
+                    {
+                        Source = new BitmapImage(new Uri(klub1.LOGO, UriKind.RelativeOrAbsolute)),
+                        Width = 50,
+                        Height = 50
+                    };
+
+                    image.MouseDown += Image_MouseDown;
+                    image.MouseMove += Image_MouseMove;
+                    image.MouseUp += Image_MouseUp;
+
+                    Canvas.SetLeft(image, klub1.X);
+                    Canvas.SetTop(image, klub1.Y);
+
+                    canvas.Children.Add(image);
+
+                    if (kluboviTreeView != null)
+                    {
+                        viewModel.Klubovi.Remove(klub1);
+                    }
+                    viewModel.KluboviNaMapi.Add(klub1);
                 }
-            
-                var canvas = sender as Canvas;
-                Point pozicija = e.GetPosition(canvas);
-
-                // Postavljanje X i Y koordinata kluba
-                klub.X = pozicija.X;
-                klub.Y = pozicija.Y;
-
-                viewModel.KluboviNaMapi.Add(klub);
-
-             
             }
         }
+        private void Image_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            draggedElement = sender as Image;
+            if (draggedElement != null)
+            {
+                Mouse.OverrideCursor = Cursors.None;
+                isDragging = true;
+                clickPosition = e.GetPosition(MapCanvas);
+                draggedElement.CaptureMouse();
+            }
+        }
+
+        private void Image_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (isDragging && draggedElement != null)
+            {
+                Point currentPosition = e.GetPosition(MapCanvas);
+                double offsetX = currentPosition.X - clickPosition.X;
+                double offsetY = currentPosition.Y - clickPosition.Y;
+
+                double newLeft = Canvas.GetLeft(draggedElement) + offsetX;
+                double newTop = Canvas.GetTop(draggedElement) + offsetY;
+
+                Canvas.SetLeft(draggedElement, newLeft);
+                Canvas.SetTop(draggedElement, newTop);
+
+                clickPosition = currentPosition;
+            }
+        }
+
+        private void Image_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            if (isDragging && draggedElement != null)
+            {
+                Mouse.OverrideCursor = Cursors.Arrow;
+                isDragging = false;
+                draggedElement.ReleaseMouseCapture();
+                draggedElement = null;
+            }
+        }
+
     }
 }

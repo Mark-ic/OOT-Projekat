@@ -55,8 +55,6 @@ namespace Projekat
             this.logo = string.Empty;
             OdabraniKlub = null;
             Klubovi = new ObservableCollection<Klub>();
-            KluboviNaMapi = new ObservableCollection<Klub>();
-            KluboviNaMapi.Add(new Klub(5, "Makarona", "Novi sad", "/logo_kluba/alba.png", 0, 0));
         }
 
         public Klub(int id, string naziv, string mesto, string logo, double x = 0, double y = 0)
@@ -68,7 +66,6 @@ namespace Projekat
             this.x = x;
             this.y = y;
             Klubovi = new ObservableCollection<Klub>();
-            KluboviNaMapi = new ObservableCollection<Klub>();
         }
 
         public int ID
@@ -203,14 +200,7 @@ namespace Projekat
                 }
             }
         }
-        public void UkloniKlub(Klub klub)
-        {
-            if (Klubovi.Contains(klub))
-            {
-                Klubovi.Remove(klub);
-                NotifyPropertyChanged(nameof(Klubovi));
-            }
-        }
+        
     }
 }
 
