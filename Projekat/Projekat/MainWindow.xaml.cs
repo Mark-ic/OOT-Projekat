@@ -63,6 +63,12 @@ namespace Projekat
            
         }
 
+        private void Slika_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            DodavanjeIgraca DodavanjeIgraca= new DodavanjeIgraca();
+            DodavanjeIgraca.Show();
+        }
+
 
 
         private void Stablo_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -153,7 +159,5 @@ namespace Projekat
              
             }
         }
-
-        
     }
 }

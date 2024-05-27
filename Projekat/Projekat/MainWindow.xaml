@@ -46,6 +46,7 @@
                             <DataGridTextColumn Header="Pozicija" Binding="{Binding POZICIJA}"/>
                             <DataGridTextColumn Header="Broj utakmica" Binding="{Binding BR_UTAKMICA}"/>
                             <DataGridTextColumn Header="Prosek poena" Binding="{Binding BR_POENA}"/>
+                            <DataGridTextColumn Header="JMBG" Binding="{Binding JMBG}"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
@@ -66,7 +67,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Grid Grid.Column="1">
-                        <Image Source="/teren_mapa/teren.png" Stretch="Fill" Name="Teren"/>
+                        <Image Source="/teren_mapa/teren.png" Stretch="Fill" Name="Teren" MouseRightButtonDown="Slika_MouseRightButtonDown"/>
                     </Grid>
 
                     <Grid Grid.Column="0">

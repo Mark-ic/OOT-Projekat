@@ -10,7 +10,7 @@ using System.Windows;
 
 namespace Projekat
 {
-    internal class Kosarkasi
+    internal class Kosarkasi : INotifyPropertyChanged
     {
         private List<Kosarkas> lista;
 
@@ -31,7 +31,7 @@ namespace Projekat
                 if (this.lista != value)
                 {
                     this.lista = value;
-                    this.NotifyPropertyChanged("KOSARKSAI");
+                    this.NotifyPropertyChanged("KOSARKASI");
                 }
             }
         }
@@ -42,9 +42,17 @@ namespace Projekat
             this.lista= new List<Kosarkas>();
         }
 
-        public void dodaj(Kosarkas kosarkas)
+        public bool dodaj(Kosarkas kosarkas)
         {
+            foreach(Kosarkas item in lista)
+            {
+                if (kosarkas.JMBG == item.JMBG)
+                {
+                    return false;
+                }
+            }
             lista.Add(kosarkas);
+            return true;
         }
 
         public bool provera(long jmbg)
