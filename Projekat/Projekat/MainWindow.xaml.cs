@@ -25,16 +25,16 @@ namespace Projekat
         public MainWindow()
         {
             InitializeComponent();
-             startPoint = new Point();
+            startPoint = new Point();
 
 
             Kosarkasi kosarkasi = new Kosarkasi();
-             klub= new Klub();
+            klub = new Klub();
 
 
             kosarkasi.import("igraci.txt");
             ilKosarkasa.ItemsSource = kosarkasi.KOSARKASI;
-            TabelaKosarkasi.ItemsSource=kosarkasi.KOSARKASI;
+            TabelaKosarkasi.ItemsSource = kosarkasi.KOSARKASI;
 
             klub.Import("timovi.txt");
             viewModel = new MainViewModel();
@@ -61,12 +61,12 @@ namespace Projekat
                     klub.OdabraniKlub = selectedKlub;
                 }
             }
-           
+
         }
 
         private void Slika_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
         {
-            DodavanjeIgraca DodavanjeIgraca= new DodavanjeIgraca();
+            DodavanjeIgraca DodavanjeIgraca = new DodavanjeIgraca();
             DodavanjeIgraca.Show();
         }
 
@@ -106,7 +106,7 @@ namespace Projekat
 
 
         }
-        
+
         private static T FindAncestor<T>(DependencyObject current) where T : DependencyObject
         {
             do
@@ -120,16 +120,16 @@ namespace Projekat
             while (current != null);
             return null;
         }
-        
+
 
         private void MapCanvas_DragEnter(object sender, DragEventArgs e)
         {
-            
+
             if (!e.Data.GetDataPresent("myFormat") || sender == e.Source)
             {
                 e.Effects = DragDropEffects.None;
             }
-            
+
 
         }
 
@@ -142,29 +142,45 @@ namespace Projekat
 
                 if (klub1 != null)
                 {
-                  
-
                     var canvas = sender as Canvas;
                     Point pozicija = e.GetPosition(canvas);
 
                     klub1.X = pozicija.X;
                     klub1.Y = pozicija.Y;
-                   
-                    Image image = new Image
+
+                    // Proveriti da li slika vec postoji na Canvasu
+                    Image existingImage = null;
+                    foreach (var child in canvas.Children)
                     {
-                        Source = new BitmapImage(new Uri(klub1.LOGO, UriKind.RelativeOrAbsolute)),
-                        Width = 50,
-                        Height = 50
-                    };
+                        if (child is Image image && image.Tag == klub1)
+                        {
+                            existingImage = image;
+                            break;
+                        }
+                    }
 
-                    image.MouseDown += Image_MouseDown;
-                    image.MouseMove += Image_MouseMove;
-                    image.MouseUp += Image_MouseUp;
+                    // Ako slika ne postoji, dodaj novu
+                    if (existingImage == null)
+                    {
+                        Image image = new Image
+                        {
+                            Source = new BitmapImage(new Uri(klub1.LOGO, UriKind.RelativeOrAbsolute)),
+                            Width = 50,
+                            Height = 50,
+                            Tag = klub1
+                        };
 
-                    Canvas.SetLeft(image, klub1.X);
-                    Canvas.SetTop(image, klub1.Y);
+                        image.MouseDown += Image_MouseDown;
+                        image.MouseMove += Image_MouseMove;
+                        image.MouseUp += Image_MouseUp;
+                        image.PreviewMouseLeftButtonDown += Image_PreviewMouseLeftButtonDown;
+                        
 
-                    canvas.Children.Add(image);
+                        Canvas.SetLeft(image, klub1.X);
+                        Canvas.SetTop(image, klub1.Y);
+
+                        canvas.Children.Add(image);
+                    }
 
                     if (kluboviTreeView != null)
                     {
@@ -174,6 +190,7 @@ namespace Projekat
                 }
             }
         }
+
         private void Image_MouseDown(object sender, MouseButtonEventArgs e)
         {
             draggedElement = sender as Image;
@@ -184,7 +201,10 @@ namespace Projekat
                 clickPosition = e.GetPosition(MapCanvas);
                 draggedElement.CaptureMouse();
             }
+            Mouse.OverrideCursor = Cursors.Arrow;
         }
+
+
 
         private void Image_MouseMove(object sender, MouseEventArgs e)
         {
@@ -194,8 +214,16 @@ namespace Projekat
                 double offsetX = currentPosition.X - clickPosition.X;
                 double offsetY = currentPosition.Y - clickPosition.Y;
 
+
                 double newLeft = Canvas.GetLeft(draggedElement) + offsetX;
                 double newTop = Canvas.GetTop(draggedElement) + offsetY;
+
+
+                double canvasWidth = MapCanvas.ActualWidth;
+                double canvasHeight = MapCanvas.ActualHeight;
+
+                newLeft = Math.Max(0, Math.Min(newLeft, canvasWidth - draggedElement.ActualWidth));
+                newTop = Math.Max(0, Math.Min(newTop, canvasHeight - draggedElement.ActualHeight));
 
                 Canvas.SetLeft(draggedElement, newLeft);
                 Canvas.SetTop(draggedElement, newTop);
@@ -204,6 +232,9 @@ namespace Projekat
             }
         }
 
+
+
+
         private void Image_MouseUp(object sender, MouseButtonEventArgs e)
         {
             if (isDragging && draggedElement != null)
@@ -211,9 +242,68 @@ namespace Projekat
                 Mouse.OverrideCursor = Cursors.Arrow;
                 isDragging = false;
                 draggedElement.ReleaseMouseCapture();
+                draggedElement.MouseMove -= Image_MouseMoveFromCanvas;
                 draggedElement = null;
             }
         }
 
+        private void Image_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            startPoint = e.GetPosition(null);
+            
+            (sender as Image).MouseMove += Image_MouseMoveFromCanvas;
+        }
+
+        private void Image_MouseMoveFromCanvas(object sender, MouseEventArgs e)
+        {
+            Point mousePos = e.GetPosition(null);
+            Vector diff = startPoint - mousePos;
+            if (e.LeftButton == MouseButtonState.Pressed &&
+                (Math.Abs(diff.X) > SystemParameters.MinimumHorizontalDragDistance ||
+                Math.Abs(diff.Y) > SystemParameters.MinimumVerticalDragDistance))
+            {
+                Image image = sender as Image;
+                if (image != null)
+                {
+                    Klub klub = image.Tag as Klub;
+                    if (klub != null)
+                    {
+                        DataObject dragData = new DataObject("myFormat", klub);
+                        DragDrop.DoDragDrop(image, dragData, DragDropEffects.Move);
+                    }
+                }
+            }
+        }
+        
+        private void Stablo_Drop(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent("myFormat"))
+            {
+                Klub klub1 = e.Data.GetData("myFormat") as Klub;
+                if (klub1 != null)
+                {
+                    viewModel.Klubovi.Add(klub1);
+                    viewModel.KluboviNaMapi.Remove(klub1);
+                    Mouse.OverrideCursor = Cursors.Arrow;
+
+                    var canvas = MapCanvas;
+                    Image imageToRemove = null;
+
+                    foreach (var child in canvas.Children)
+                    {
+                        if (child is Image image && image.Tag == klub1)
+                        {
+                            imageToRemove = image;
+                            break;
+                        }
+                    }
+
+                    if (imageToRemove != null)
+                    {
+                        canvas.Children.Remove(imageToRemove);
+                    }
+                }
+            }
+        }
     }
 }

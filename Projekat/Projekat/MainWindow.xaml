@@ -120,7 +120,9 @@
                     </Grid.ColumnDefinitions>
 
                         <Grid Grid.Column="0">
-                            <TreeView x:Name="Stablo"  SelectedItemChanged="Stablo_SelectedItemChanged" PreviewMouseLeftButtonDown="Stablo_PreviewMouseLeftButtonDown" MouseMove="Stablo_MouseMove" Background="LightSkyBlue">
+                            <TreeView x:Name="Stablo"  SelectedItemChanged="Stablo_SelectedItemChanged"
+                                      PreviewMouseLeftButtonDown="Stablo_PreviewMouseLeftButtonDown" MouseMove="Stablo_MouseMove" Background="LightSkyBlue" AllowDrop="True"
+                  Drop="Stablo_Drop">
                                 <TreeView.ItemTemplate>
                                     <HierarchicalDataTemplate ItemsSource="{Binding Klubovi}">
                                         <Expander Header="{Binding NAZIV}">
