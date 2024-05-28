@@ -28,14 +28,22 @@
                             <RowDefinition Height="*"></RowDefinition>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="3*"/>
                             <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left">Pretrazi igraca</TextBlock>
-                        <TextBox Name="searchBox" Grid.Row="1" Grid.Column="0" />
-                        <Button  Name="search" Grid.Row="1" Grid.Column="1" Margin="5 0 5 0" >Pretrazi</Button>
-                        <Button  Name="export" Grid.Row="2" Grid.Column="2" Margin="50 0 5 5" Click="export_Click" >Export tabele</Button>
+                        <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left">Pretrazi po imenu</TextBlock>
+                        <TextBox Name="txtIME" Grid.Row="1" Grid.Column="0" TextChanged="searchBox_TextChanged"/>
+                        <TextBlock Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left">Pretrazi po prezimenu</TextBlock>
+                        <TextBox Name="txtPREZIME" Grid.Row="1" Grid.Column="1" TextChanged="searchBox1_TextChanged"/>
+                        <TextBlock Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center">Pozicija</TextBlock>
+                        <ComboBox Name="comboBox" Grid.Row="1" Grid.Column="2" SelectionChanged="comboBox_SelectionChanged"/>
+
+
+                        <Button  Name="ocisti" Grid.Row="1" Grid.Column="4" Margin="51,0,4,5" Click="ocisti_Click" >Ocisti</Button>
+                        <Button  Name="export" Grid.Row="2" Grid.Column="4" Margin="51,0,4,5" Click="export_Click" >Export tabele</Button>
                     </Grid>
                     <DataGrid x:Name="TabelaKosarkasi" IsReadOnly="True" GridLinesVisibility="Horizontal" AutoGenerateColumns="False" Grid.ColumnSpan="2" Margin="0,106,0,0" Grid.RowSpan="2">
                         <DataGrid.Columns>

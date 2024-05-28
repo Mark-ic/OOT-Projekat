@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Collections.ObjectModel;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -43,6 +44,14 @@ namespace Projekat
             viewModel.Klubovi = klub.Klubovi;
             Stablo.ItemsSource = viewModel.Klubovi;
             this.DataContext = viewModel;
+            List<string> pozicije = new List<string>();
+            pozicije.Add("C");
+            pozicije.Add("PG");
+            pozicije.Add("SF");
+            pozicije.Add("PF");
+            comboBox.ItemsSource= pozicije;
+
+
         }
 
         private void export_Click(object sender, RoutedEventArgs e)
@@ -686,6 +695,42 @@ namespace Projekat
         {
             // hendlanje kolizije eventova
             e.Handled = true;
+        }
+
+        private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Provera();
+        }
+        private void searchBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Provera();
+        }
+
+        private void searchBox1_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Provera();
+        }
+        private void Provera()
+        {
+            string ime = txtIME.Text.ToLower();
+            string prezime = txtPREZIME.Text.ToLower();
+            string pozicija = comboBox.SelectedValue?.ToString();
+
+            var filtriraniKosarkasi = viewModel.Kosarkasi.Where(k =>
+              (string.IsNullOrEmpty(ime) || k.IME.ToLower().Contains(ime)) &&
+              (string.IsNullOrEmpty(prezime) || k.PREZIME.ToLower().Contains(prezime)) &&
+              (string.IsNullOrEmpty(pozicija) || k.POZICIJA == pozicija)
+          ).ToList();
+
+            TabelaKosarkasi.ItemsSource = filtriraniKosarkasi;
+
+        }
+
+        private void ocisti_Click(object sender, RoutedEventArgs e)
+        {
+            comboBox.SelectedIndex = -1;
+            txtIME.Text = "";
+            txtPREZIME.Text = "";
         }
     }
 }
