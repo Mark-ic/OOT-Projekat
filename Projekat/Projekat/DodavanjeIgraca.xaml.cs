@@ -20,9 +20,11 @@ namespace Projekat
     /// </summary>
     public partial class DodavanjeIgraca : Window
     {
-        public DodavanjeIgraca()
+        MainViewModel model;
+        public DodavanjeIgraca(MainViewModel mdl)
         {
             InitializeComponent();
+            model = mdl;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -31,8 +33,6 @@ namespace Projekat
             int br_utakmica;
             int broj_dresa;
             long jmbg;
-            Kosarkas kosarkas=new Kosarkas();
-            kosarkas.import("igraci.txt");
             if(Ime.Text=="" || Prezime.Text=="" || Pozicija.Text=="" || Nacionalnost.Text=="" || Br_utakmica.Text=="" || Poeni.Text=="" || JMBG.Text == "" || Br_dresa.Text=="")
             {
                 MessageBox.Show("Niste uneli sve potrebne informacije vezane za igraca.");
@@ -45,10 +45,11 @@ namespace Projekat
                     jmbg = long.Parse(JMBG.Text);
                     br_utakmica = int.Parse(Br_utakmica.Text);
                     broj_dresa=int.Parse(Br_dresa.Text);
-
-                    if (kosarkas.dodaj(new Kosarkas(jmbg, Ime.Text, Prezime.Text, Pozicija.Text, Nacionalnost.Text, broj_dresa, br_utakmica, br_poena, Slika.Text)))
+                    Kosarkas kosarkas = new Kosarkas();
+                    if (model.dodajKosarkasa(new Kosarkas(jmbg, Ime.Text, Prezime.Text, Pozicija.Text, Nacionalnost.Text, broj_dresa, br_utakmica, br_poena, Slika.Text)))
                     {
                         MessageBox.Show("Uspesno ste uneli igraca");
+                        kosarkas.Kosarkasi = model.Kosarkasi;
                         kosarkas.export("igraci.txt");
                         Ime.Text = "";
                         Prezime.Text = "";

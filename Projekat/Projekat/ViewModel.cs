@@ -55,5 +55,18 @@ namespace Projekat
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        public bool dodajKosarkasa(Kosarkas k)
+        {
+            foreach (Kosarkas item in Kosarkasi)
+            {
+                if (k.JMBG == item.JMBG)
+                {
+                    return false;
+                }
+            }
+            Kosarkasi.Add(k);
+            return true;
+        }
     }
 }

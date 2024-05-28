@@ -83,7 +83,7 @@ namespace Projekat
         private void Slika_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
         {
 
-            DodavanjeIgraca DodavanjeIgraca = new DodavanjeIgraca();
+            DodavanjeIgraca DodavanjeIgraca = new DodavanjeIgraca(viewModel);
             DodavanjeIgraca.Show();
         }
 
@@ -296,8 +296,8 @@ namespace Projekat
                         Image image = new Image
                         {
                             Source = new BitmapImage(new Uri(kosarkas1.SLIKA, UriKind.RelativeOrAbsolute)),
-                            Width = 50,
-                            Height = 50,
+                            Width = 100,
+                            Height = 100,
                             Tag = kosarkas1
                         };
 
@@ -309,11 +309,11 @@ namespace Projekat
 
                         ContextMenu contextMenu = new ContextMenu();
                         MenuItem editMenuItem = new MenuItem { Header = "Izmeni" };
-                        editMenuItem.Click += EditMenuItem_Click;
-                        MenuItem deleteMenuItem = new MenuItem { Header = "Obriši sa mape" };
-                        deleteMenuItem.Click += DeleteMenuItem_Click;
+                        editMenuItem.Click += EditMenuItem_Click2;
+                        MenuItem deleteMenuItem = new MenuItem { Header = "Obriši sa terena" };
+                        deleteMenuItem.Click += DeleteMenuItem_Click2;
                         MenuItem deleteRemove = new MenuItem { Header = "Obriši iz aplikacije" };
-                        deleteRemove.Click += DeleteRemove_Click;
+                        deleteRemove.Click += DeleteRemove_Click2;
 
                         contextMenu.Items.Add(editMenuItem);
                         contextMenu.Items.Add(deleteMenuItem);
@@ -586,6 +586,22 @@ namespace Projekat
                 }
             }
         }
+        private void EditMenuItem_Click2(object sender, RoutedEventArgs e)
+        {
+            var menuItem = sender as MenuItem;
+            var contextMenu = menuItem?.Parent as ContextMenu;
+            var element = contextMenu?.PlacementTarget;
+
+            if (element is Image image)
+            {
+                var kosarkas = image.Tag as Kosarkas;
+                if (kosarkas != null)
+                {
+                    IzmenaIgraca izmena = new IzmenaIgraca(kosarkas);
+                    izmena.ShowDialog();
+                }
+            }
+        }
 
         private void DeleteMenuItem_Click(object sender, RoutedEventArgs e)
         {
@@ -607,6 +623,26 @@ namespace Projekat
             }
         }
 
+        private void DeleteMenuItem_Click2(object sender, RoutedEventArgs e)
+        {
+            var menuItem = sender as MenuItem;
+            var contextMenu = menuItem?.Parent as ContextMenu;
+            var element = contextMenu?.PlacementTarget;
+
+            if (element is Image image)
+            {
+                var kosarkas = image.Tag as Kosarkas;
+                if (kosarkas != null)
+                {
+                    viewModel.Kosarkasi.Add(kosarkas);
+                    viewModel.KosarkasiNaTerenu.Remove(kosarkas);
+                    var canvas = TerenCanvas;
+                    canvas.Children.Remove(image);
+                    MessageBox.Show("Kosarkas je sklonjen sa terena!");
+                }
+            }
+        }
+
 
         private void DeleteRemove_Click(object sender, RoutedEventArgs e)
         {
@@ -623,6 +659,25 @@ namespace Projekat
                     var canvas = MapCanvas;
                     canvas.Children.Remove(image);
                     MessageBox.Show("Klub je izbrisan iz aplikacije!");
+                }
+            }
+
+        }
+        private void DeleteRemove_Click2(object sender, RoutedEventArgs e)
+        {
+            var menuItem = sender as MenuItem;
+            var contextMenu = menuItem?.Parent as ContextMenu;
+            var element = contextMenu?.PlacementTarget;
+
+            if (element is Image image)
+            {
+                var kosarkas = image.Tag as Kosarkas;
+                if (kosarkas != null)
+                {
+                    viewModel.KosarkasiNaTerenu.Remove(kosarkas);
+                    var canvas = TerenCanvas;
+                    canvas.Children.Remove(image);
+                    MessageBox.Show("Kosarkas je izbrisan iz aplikacije!");
                 }
             }
 
