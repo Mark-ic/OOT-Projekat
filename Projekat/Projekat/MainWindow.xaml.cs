@@ -175,7 +175,16 @@ namespace Projekat
                         image.MouseMove += Image_MouseMove;
                         image.MouseUp += Image_MouseUp;
                         image.PreviewMouseLeftButtonDown += Image_PreviewMouseLeftButtonDown;
-                        
+
+                        ContextMenu contextMenu = new ContextMenu();
+                        MenuItem editMenuItem = new MenuItem { Header = "Izmeni" };
+                        editMenuItem.Click += EditMenuItem_Click;
+                        MenuItem deleteMenuItem = new MenuItem { Header = "Obriši" };
+                        deleteMenuItem.Click += DeleteMenuItem_Click;
+                        contextMenu.Items.Add(editMenuItem);
+                        contextMenu.Items.Add(deleteMenuItem);
+
+                        image.ContextMenu = contextMenu;
 
                         Canvas.SetLeft(image, klub1.X);
                         Canvas.SetTop(image, klub1.Y);
@@ -315,6 +324,40 @@ namespace Projekat
         {
             DodavanjeKluba dk = new DodavanjeKluba(viewModel);
             dk.ShowDialog();
+        }
+       
+        private void EditMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            var menuItem = sender as MenuItem;
+            var contextMenu = menuItem?.Parent as ContextMenu;
+            var element = contextMenu?.PlacementTarget;
+
+            if (element is Image image)
+            {
+                var klub = image.Tag as Klub;
+                if (klub != null)
+                {
+                    MessageBox.Show($"Izmena Kluba:");
+                }
+            }
+        }
+
+        private void DeleteMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            var menuItem = sender as MenuItem;
+            var contextMenu = menuItem?.Parent as ContextMenu;
+            var element = contextMenu?.PlacementTarget;
+
+            if (element is Image image)
+            {
+                var klub = image.Tag as Klub;
+                if (klub != null)
+                {
+                    viewModel.KluboviNaMapi.Remove(klub);
+                    var canvas = MapCanvas;
+                    canvas.Children.Remove(image);
+                }
+            }
         }
     }
 }
