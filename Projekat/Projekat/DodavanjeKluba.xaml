@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Projekat"
         mc:Ignorable="d"
         Title="DodavanjeKluba" Height="450" Width="800">
-    <Grid>
+    <Grid Background="LightGray">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
@@ -26,8 +26,8 @@
         <TextBox x:Name="textMestp" Grid.Row="2" Grid.Column="2" FontSize="22" HorizontalAlignment="Center" VerticalAlignment="Center" Background="LightGray" Width="200"></TextBox>
         <TextBox x:Name="textIme" Grid.Row="1" Grid.Column="2" FontSize="22" HorizontalAlignment="Center" VerticalAlignment="Center" Background="LightGray" Width="200"></TextBox>
 
-        <Button x:Name="Dugme" Grid.Row="3" Grid.Column="2" Content="dodaj sliku" Click="Dugme_Click"></Button>
-        <Button x:Name="Dodaj" Grid.Row="4" Grid.Column="2" Content="dodaj klub" Click="Dodaj_Click"></Button>
+        <Button x:Name="Dugme" Grid.Row="3" Grid.Column="2" Content="dodaj sliku" Click="Dugme_Click" Width="100" Height="40"></Button>
+        <Button x:Name="Dodaj" Grid.Row="4" Grid.Column="2" Content="dodaj klub" Click="Dodaj_Click" Width="100" Height="40"></Button>
 
     </Grid>
 </Window>

@@ -22,9 +22,11 @@ namespace Projekat
     public partial class DodavanjeKluba : Window
     {
         bool dodata = false;
-        public DodavanjeKluba()
+        MainViewModel ma;
+        public DodavanjeKluba(MainViewModel md)
         {
             InitializeComponent();
+            ma = md;    
         }
 
         private void Dugme_Click(object sender, RoutedEventArgs e)
@@ -58,16 +60,27 @@ namespace Projekat
         }
         private void Dodaj_Click(object sender, RoutedEventArgs e)
         {
+            Klub klub;
+            Random random = new Random();   
             if(textIme.Text !="" && textMestp.Text!="" )
             {
                 if(dodata)
                 {
-
+                    string nepoznat = "/slike_igraca/nepoznat.png";
+                    klub=new Klub(random.Next(1500,int.MaxValue),textIme.Text,textMestp.Text,nepoznat);
                 }
                 {
+                    string nepoznat = "/slike_igraca/nepoznat.png";
+                    klub = new Klub(random.Next(1500, int.MaxValue), textIme.Text, textMestp.Text, nepoznat);
 
                 }
-
+                if (!ma.Klubovi.Contains(klub))
+                {
+                    MessageBox.Show("Uspesno dodato!");
+                    textIme.Text = "";
+                    textMestp.Text = "";
+                    ma.Klubovi.Add(klub);
+                }
             }
             else
             {

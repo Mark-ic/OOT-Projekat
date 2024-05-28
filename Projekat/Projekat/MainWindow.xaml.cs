@@ -19,7 +19,8 @@ namespace Projekat
         private bool isDragging = false;
         private Point clickPosition;
         private Image draggedElement;
-        private MainViewModel viewModel;
+        private static MainViewModel viewModel;
+
         Point startPoint;
         Klub klub;
         public MainWindow()
@@ -312,7 +313,7 @@ namespace Projekat
 
         private void MapCanvas_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
         {
-            DodavanjeKluba dk = new DodavanjeKluba();
+            DodavanjeKluba dk = new DodavanjeKluba(viewModel);
             dk.ShowDialog();
         }
     }
