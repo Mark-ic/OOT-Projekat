@@ -66,9 +66,11 @@
                         <ColumnDefinition Width="2*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
 
-                    <Grid Grid.Column="1">
-                        <Image Source="/teren_mapa/teren.png" Stretch="Fill" Name="Teren" MouseRightButtonDown="Slika_MouseRightButtonDown"/>
-                    </Grid>
+                    <Canvas Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0" x:Name="TerenCanvas" IsHitTestVisible="True" AllowDrop="True" DragEnter="TerenCanvas_DragEnter" Drop="TerenCanvas_Drop" MouseRightButtonDown="Slika_MouseRightButtonDown">
+                        <Canvas.Background>
+                            <ImageBrush ImageSource="/teren_mapa/teren.png"/>
+                        </Canvas.Background>
+                    </Canvas>
 
                     <Grid Grid.Column="0">
                         <Grid.RowDefinitions>
@@ -77,7 +79,7 @@
                             <RowDefinition Height="20*"></RowDefinition>
                         </Grid.RowDefinitions>
                         <TextBlock Grid.Row="1">Kosarkasi:</TextBlock>
-                        <ListView Background="LightYellow" Grid.Row="2" Name="ilKosarkasa">
+                        <ListView Background="LightYellow" Grid.Row="2" x:Name="ListaKosarkasa"  SelectionChanged="Lista_SelectionChanged" PreviewMouseLeftButtonDown="Lista_PreviewMouseLeftButtonDown" MouseMove="Lista_MouseMove" AllowDrop="True" Drop="Lista_Drop">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <Grid>
