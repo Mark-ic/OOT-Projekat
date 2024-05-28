@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Projekat
 {
@@ -18,7 +21,25 @@ namespace Projekat
         private int br_utakmica;
         private double br_poena;
         private string slika;
+        private double x;
+        private double y;
 
+        private Kosarkas _odabraniKosarkas;
+        public ObservableCollection<Kosarkas> Kosarkasi{ get; set; }
+        public ObservableCollection<Kosarkas> KosarkasiNaTerenu { get; set; }
+
+        public Kosarkas OdabraniKosarkas
+        {
+            get { return _odabraniKosarkas; }
+            set
+            {
+                if (_odabraniKosarkas != value)
+                {
+                    _odabraniKosarkas = value;
+                    NotifyPropertyChanged(nameof(OdabraniKosarkas));
+                }
+            }
+        }
 
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -40,6 +61,9 @@ namespace Projekat
             br_dresa = 0;
             br_utakmica = 0;
             br_poena = 0;
+            x = 0;
+            y = 0;
+            Kosarkasi = new ObservableCollection<Kosarkas>();
 
         }
 
@@ -48,7 +72,7 @@ namespace Projekat
             long jmbg, string ime, string prezime,
             string pozicija, string nacionalnost,
             int br_dresa, int br_utakmica,
-            double br_poena, string slika
+            double br_poena, string slika,double x=0,double y = 0
             )
         {
             this.jmbg = jmbg;
@@ -59,6 +83,10 @@ namespace Projekat
             this.br_dresa = br_dresa;
             this.br_utakmica = br_utakmica;
             this.br_poena = br_poena;
+            OdabraniKosarkas = null;
+            Kosarkasi = new ObservableCollection<Kosarkas>();
+            this.x = x;
+            this.y = y;
             if (slika != "")
             {
                 this.slika = slika;
@@ -66,6 +94,43 @@ namespace Projekat
             else
             {
                 this.slika = "/slike_igraca/nepoznat.png";
+            }
+        }
+        public double X
+        {
+            get { return x; }
+            set
+            {
+                if (this.x != value)
+                {
+                    this.x = value;
+                    this.NotifyPropertyChanged(nameof(X));
+                }
+            }
+        }
+
+        public double Y
+        {
+            get { return y; }
+            set
+            {
+                if (this.y != value)
+                {
+                    this.y = value;
+                    this.NotifyPropertyChanged(nameof(Y));
+                }
+            }
+        }
+        public ObservableCollection<Kosarkas> KOSARKASI
+        {
+            get { return Kosarkasi; }
+            set
+            {
+                if (this.Kosarkasi != value)
+                {
+                    this.Kosarkasi = value;
+                    this.NotifyPropertyChanged(nameof(KOSARKASI));
+                }
             }
         }
 
@@ -203,6 +268,81 @@ namespace Projekat
         {
             string str = IME + "," + PREZIME + "," + POZICIJA + "," + BR_POENA;
             return str;
+        }
+        public bool dodaj(Kosarkas kosarkas)
+        {
+            foreach (Kosarkas item in Kosarkasi)
+            {
+                if (kosarkas.JMBG == item.JMBG)
+                {
+                    return false;
+                }
+            }
+            Kosarkasi.Add(kosarkas);
+            return true;
+        }
+
+        public bool provera(long jmbg)
+        {
+            foreach (Kosarkas kosarkas in Kosarkasi)
+            {
+                if (kosarkas.JMBG == jmbg)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public void import(string file)
+        {
+            StreamReader sr = null;
+            string linija;
+            long jmbg;
+            try
+            {
+                sr = new StreamReader(file);
+
+                while ((linija = sr.ReadLine()) != null)
+                {
+                    string[] delovi = linija.Split('|');
+                    jmbg = long.Parse(delovi[0]);
+                    if (provera(jmbg))
+                    {
+                        Kosarkasi.Add(new Kosarkas(jmbg, delovi[1], delovi[2], delovi[3], delovi[4], int.Parse(delovi[5]), int.Parse(delovi[6]), double.Parse(delovi[7]), delovi[8]));
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                if (sr != null) sr.Close();
+            }
+        }
+
+        public void export(string file)
+        {
+            StreamWriter sw = null;
+            try
+            {
+                sw = new StreamWriter(file);
+                foreach (Kosarkas k in Kosarkasi)
+                {
+                    sw.WriteLine(k.ToString());
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            finally
+            {
+                if (sw != null) sw.Close();
+            }
         }
     }
 }

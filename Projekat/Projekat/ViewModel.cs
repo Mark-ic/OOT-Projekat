@@ -9,6 +9,11 @@ namespace Projekat
         public ObservableCollection<Klub> KluboviNaMapi { get; set; }
 
         private Klub _odabraniKlub;
+
+        public ObservableCollection<Kosarkas> Kosarkasi { get; set; }
+        public ObservableCollection<Kosarkas> KosarkasiNaTerenu { get; set; }
+
+        private Kosarkas _odabraniKosarkas;
         public Klub OdabraniKlub
         {
             get { return _odabraniKlub; }
@@ -21,11 +26,25 @@ namespace Projekat
                 }
             }
         }
+        public Kosarkas OdabraniKosarkas
+        {
+            get { return _odabraniKosarkas; }
+            set
+            {
+                if (_odabraniKosarkas != value)
+                {
+                    _odabraniKosarkas = value;
+                    NotifyPropertyChanged(nameof(OdabraniKosarkas));
+                }
+            }
+        }
 
         public MainViewModel()
         {
             Klubovi = new ObservableCollection<Klub>();
             KluboviNaMapi = new ObservableCollection<Klub>();
+            Kosarkasi=new ObservableCollection<Kosarkas>();
+            KosarkasiNaTerenu=new ObservableCollection<Kosarkas>();
 
 
         }

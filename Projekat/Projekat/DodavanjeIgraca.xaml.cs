@@ -31,8 +31,8 @@ namespace Projekat
             int br_utakmica;
             int broj_dresa;
             long jmbg;
-            Kosarkasi kosarkasi=new Kosarkasi();
-            kosarkasi.import("igraci.txt");
+            Kosarkas kosarkas=new Kosarkas();
+            kosarkas.import("igraci.txt");
             if(Ime.Text=="" || Prezime.Text=="" || Pozicija.Text=="" || Nacionalnost.Text=="" || Br_utakmica.Text=="" || Poeni.Text=="" || JMBG.Text == "" || Br_dresa.Text=="")
             {
                 MessageBox.Show("Niste uneli sve potrebne informacije vezane za igraca.");
@@ -46,10 +46,10 @@ namespace Projekat
                     br_utakmica = int.Parse(Br_utakmica.Text);
                     broj_dresa=int.Parse(Br_dresa.Text);
 
-                    if (kosarkasi.dodaj(new Kosarkas(jmbg, Ime.Text, Prezime.Text, Pozicija.Text, Nacionalnost.Text, broj_dresa, br_utakmica, br_poena, Slika.Text)))
+                    if (kosarkas.dodaj(new Kosarkas(jmbg, Ime.Text, Prezime.Text, Pozicija.Text, Nacionalnost.Text, broj_dresa, br_utakmica, br_poena, Slika.Text)))
                     {
                         MessageBox.Show("Uspesno ste uneli igraca");
-                        kosarkasi.export("igraci.txt");
+                        kosarkas.export("igraci.txt");
                         Ime.Text = "";
                         Prezime.Text = "";
                         Pozicija.Text = "";

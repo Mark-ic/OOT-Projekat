@@ -23,22 +23,23 @@ namespace Projekat
 
         Point startPoint;
         Klub klub;
+        Kosarkas kosarkas;
         public MainWindow()
         {
             InitializeComponent();
             startPoint = new Point();
-
-
-            Kosarkasi kosarkasi = new Kosarkasi();
+            viewModel = new MainViewModel();
+            kosarkas = new Kosarkas();
             klub = new Klub();
 
 
-            kosarkasi.import("igraci.txt");
-            ilKosarkasa.ItemsSource = kosarkasi.KOSARKASI;
-            TabelaKosarkasi.ItemsSource = kosarkasi.KOSARKASI;
+            kosarkas.import("igraci.txt");
+            viewModel.Kosarkasi = kosarkas.Kosarkasi;
+            ilKosarkasa.ItemsSource = viewModel.Kosarkasi;
+            TabelaKosarkasi.ItemsSource = viewModel.Kosarkasi;
 
             klub.Import("timovi.txt");
-            viewModel = new MainViewModel();
+            
             viewModel.Klubovi = klub.Klubovi;
             Stablo.ItemsSource = viewModel.Klubovi;
             this.DataContext = viewModel;
@@ -46,10 +47,10 @@ namespace Projekat
 
         private void export_Click(object sender, RoutedEventArgs e)
         {
-            Kosarkasi kosarkasi = new Kosarkasi();
+            Kosarkas kosarkas = new Kosarkas();
 
-            kosarkasi.import("igraci.txt");
-            kosarkasi.exportTabele("tabela.csv");
+            kosarkas.import("igraci.txt");
+            //kosarkas.exportTabele("tabela.csv");
         }
 
         private void Stablo_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
