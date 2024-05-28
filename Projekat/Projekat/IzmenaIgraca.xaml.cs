@@ -66,7 +66,14 @@ namespace Projekat
                         kosarkas.BR_POENA = br_poena;
                         kosarkas.POZICIJA=Pozicija.Text;
                         kosarkas.JMBG = jmbg;
+                    if (Slika.Text!="")
+                    {
                         kosarkas.SLIKA = Slika.Text;
+                    }
+                    else
+                    {
+                        kosarkas.SLIKA = "/slike_igraca/nepoznat.png";
+                    }
 
                     MessageBox.Show("Uspesno ste izmenili igraca.");
 
@@ -104,7 +111,6 @@ namespace Projekat
                 bitmap.UriSource = new Uri(savedFilePath, UriKind.Absolute);
                 bitmap.EndInit();
 
-                slika = true;
                 Slika.Text = relativePath;
             }
         }

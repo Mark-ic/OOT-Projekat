@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -12,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.IO;
 
 namespace Projekat
 {
@@ -75,6 +77,34 @@ namespace Projekat
 
             }
 
+        }
+
+        private void Izaberi_sliku_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Image files (*.jpg, *.jpeg, *.png)|*.jpg;*.jpeg;*.png|All files (*.*)|*.*";
+            if (openFileDialog.ShowDialog() == true)
+            {
+                string selectedFilePath = openFileDialog.FileName;
+
+                string projectDirectory = AppDomain.CurrentDomain.BaseDirectory;
+                string igraciFolder = System.IO.Path.Combine(projectDirectory, "slike_igraca");
+
+                string fileExtension = System.IO.Path.GetExtension(selectedFilePath);
+                string fileName = Ime.Text + fileExtension;
+                string savedFilePath = System.IO.Path.Combine(igraciFolder, fileName);
+
+                File.Copy(selectedFilePath, savedFilePath, true);
+
+                string relativePath = "/slike_igraca/" + fileName;
+
+                BitmapImage bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.UriSource = new Uri(savedFilePath, UriKind.Absolute);
+                bitmap.EndInit();
+
+                Slika.Text = relativePath;
+            }
         }
     }
 }

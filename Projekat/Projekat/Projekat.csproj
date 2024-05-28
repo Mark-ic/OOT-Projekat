@@ -56,6 +56,7 @@
     <None Remove="teren_mapa\evroliga.png" />
     <None Remove="teren_mapa\Evropa.png" />
     <None Remove="teren_mapa\teren.png" />
+    <None Remove="teren_mapa\teren1.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -105,6 +106,7 @@
     <Resource Include="teren_mapa\evroliga.png" />
     <Resource Include="teren_mapa\Evropa.png" />
     <Resource Include="teren_mapa\teren.png" />
+    <Resource Include="teren_mapa\teren1.png" />
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,6 @@
 ﻿using System.Collections.ObjectModel;
+using System.IO;
+using System.Linq.Expressions;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -49,6 +51,7 @@ namespace Projekat
             pozicije.Add("PG");
             pozicije.Add("SF");
             pozicije.Add("PF");
+            pozicije.Add("SG");
             comboBox.ItemsSource= pozicije;
 
 
@@ -56,10 +59,29 @@ namespace Projekat
 
         private void export_Click(object sender, RoutedEventArgs e)
         {
-            Kosarkas kosarkas = new Kosarkas();
-
-            kosarkas.import("igraci.txt");
-            //kosarkas.exportTabele("tabela.csv");
+            StreamWriter sw = null;
+            try {
+                sw = new StreamWriter("tabela.csv");
+                if (TabelaKosarkasi != null)
+                {
+                    foreach (Kosarkas k in TabelaKosarkasi.Items)
+                    {
+                        sw.WriteLine(k.zaTabelu());
+                    }
+                }
+                MessageBox.Show("Uspesno ste exportovali tabelu.");
+            }
+            catch
+            {
+                MessageBox.Show("Greska prilikom exporta tabele.");
+            }
+            finally
+            {
+                if (sw != null)
+                {
+                    sw.Close();
+                }
+            }
         }
 
         private void Stablo_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
