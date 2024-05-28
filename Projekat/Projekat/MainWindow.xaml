@@ -135,7 +135,7 @@
                             </TreeView>
                         </Grid>
                         <Grid Grid.Column="1" Margin="10">
-                        <Canvas HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0" x:Name="MapCanvas" IsHitTestVisible="True" AllowDrop="True" DragEnter="MapCanvas_DragEnter" Drop="MapCanvas_Drop">
+                        <Canvas HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0" x:Name="MapCanvas" IsHitTestVisible="True" AllowDrop="True" DragEnter="MapCanvas_DragEnter" Drop="MapCanvas_Drop" MouseRightButtonDown="MapCanvas_MouseRightButtonDown">
                             <Canvas.Background>
                                 <ImageBrush ImageSource="/teren_mapa/Evropa.png"/>
                             </Canvas.Background>

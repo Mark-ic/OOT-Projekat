@@ -309,5 +309,11 @@ namespace Projekat
                 }
             }
         }
+
+        private void MapCanvas_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            DodavanjeKluba dk = new DodavanjeKluba();
+            dk.ShowDialog();
+        }
     }
 }
