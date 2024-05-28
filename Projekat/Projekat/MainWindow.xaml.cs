@@ -67,6 +67,7 @@ namespace Projekat
 
         private void Slika_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
         {
+
             DodavanjeIgraca DodavanjeIgraca = new DodavanjeIgraca();
             DodavanjeIgraca.Show();
         }
@@ -175,14 +176,19 @@ namespace Projekat
                         image.MouseMove += Image_MouseMove;
                         image.MouseUp += Image_MouseUp;
                         image.PreviewMouseLeftButtonDown += Image_PreviewMouseLeftButtonDown;
+                        image.PreviewMouseRightButtonDown += Image_PreviewMouseRightButtonDown;
 
                         ContextMenu contextMenu = new ContextMenu();
                         MenuItem editMenuItem = new MenuItem { Header = "Izmeni" };
                         editMenuItem.Click += EditMenuItem_Click;
-                        MenuItem deleteMenuItem = new MenuItem { Header = "Obriši" };
+                        MenuItem deleteMenuItem = new MenuItem { Header = "Obriši sa mape" };
                         deleteMenuItem.Click += DeleteMenuItem_Click;
+                        MenuItem deleteRemove = new MenuItem { Header = "Obriši iz aplikacije" };
+                        deleteRemove.Click += DeleteRemove_Click;
+                        
                         contextMenu.Items.Add(editMenuItem);
                         contextMenu.Items.Add(deleteMenuItem);
+                        contextMenu.Items.Add(deleteRemove);
 
                         image.ContextMenu = contextMenu;
 
@@ -200,6 +206,7 @@ namespace Projekat
                 }
             }
         }
+
 
         private void Image_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -353,11 +360,39 @@ namespace Projekat
                 var klub = image.Tag as Klub;
                 if (klub != null)
                 {
+                    viewModel.Klubovi.Add(klub);
                     viewModel.KluboviNaMapi.Remove(klub);
                     var canvas = MapCanvas;
                     canvas.Children.Remove(image);
+                    MessageBox.Show("Klub je sklonjen sa mape!");
                 }
             }
+        }
+
+
+        private void DeleteRemove_Click(object sender, RoutedEventArgs e)
+        {
+            var menuItem = sender as MenuItem;
+            var contextMenu = menuItem?.Parent as ContextMenu;
+            var element = contextMenu?.PlacementTarget;
+
+            if (element is Image image)
+            {
+                var klub = image.Tag as Klub;
+                if (klub != null)
+                {
+                    viewModel.KluboviNaMapi.Remove(klub);
+                    var canvas = MapCanvas;
+                    canvas.Children.Remove(image);
+                    MessageBox.Show("Klub je izbrisan iz aplikacije!");
+                }
+            }
+
+        }
+        private void Image_PreviewMouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            // hendlanje kolizije eventova
+            e.Handled = true;
         }
     }
 }
