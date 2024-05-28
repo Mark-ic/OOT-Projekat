@@ -345,7 +345,8 @@ namespace Projekat
                 var klub = image.Tag as Klub;
                 if (klub != null)
                 {
-                    MessageBox.Show($"Izmena Kluba:");
+                    Izmena_Kluba ik = new Izmena_Kluba(klub);
+                    ik.ShowDialog();
                 }
             }
         }
