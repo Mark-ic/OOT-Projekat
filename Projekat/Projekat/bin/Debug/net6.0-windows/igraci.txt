@@ -22,5 +22,4 @@
 5129946391|Semi|Ojeleye|SF|SAD|37|27|13.3|/slike_igraca/ojeleye.jpeg
 5109918122|Tornike|Shengelia|PF|Gruzija|21|33|14.5|/slike_igraca/shengelia.jpeg
 7019923185|Edgaras|Ulanovas|SF|Litvanija|92|34|7.6|/slike_igraca/ulanovas.jpeg
-1310003870009|Petar|Petrovic|PG|Srbin|24|25|26.5|/slike_igraca/nepoznat.png
-1310003870008|Pera|Peric|C|Srbin|98|24|14.2|slika.png
+
