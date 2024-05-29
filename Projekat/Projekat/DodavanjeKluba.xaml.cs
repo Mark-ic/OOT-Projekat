@@ -66,10 +66,11 @@ namespace Projekat
             {
                 if(dodata)
                 {
-                    string nepoznat = "/slike_igraca/nepoznat.png";
-                    klub=new Klub(random.Next(1500,int.MaxValue),textIme.Text,textMestp.Text,nepoznat);
+                    string poznat = "bin/Debug/net6.0-windows/logo_kluba/"+textIme.Text+".png";
+                    //MessageBox.Show("Putanja je: " + poznat);
+                    klub=new Klub(random.Next(1500,int.MaxValue),textIme.Text,textMestp.Text,poznat);
                 }
-                {
+                else{
                     string nepoznat = "/slike_igraca/nepoznat.png";
                     klub = new Klub(random.Next(1500, int.MaxValue), textIme.Text, textMestp.Text, nepoznat);
 
