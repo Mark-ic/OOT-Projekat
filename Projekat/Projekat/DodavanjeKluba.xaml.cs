@@ -64,15 +64,23 @@ namespace Projekat
             Random random = new Random();   
             if(textIme.Text !="" && textMestp.Text!="" )
             {
-                if(dodata)
+                int broj = random.Next(1500, int.MaxValue);
+                foreach(Klub k in ma.Klubovi)
                 {
-                    string poznat = "bin/Debug/net6.0-windows/logo_kluba/"+textIme.Text+".png";
+                    if(k.ID == broj)
+                    {
+                        broj= random.Next(1500, int.MaxValue);
+                    }
+                }
+                if (dodata)
+                {
+                    string poznat = "/logo_kluba/"+textIme.Text+".png";
                     //MessageBox.Show("Putanja je: " + poznat);
-                    klub=new Klub(random.Next(1500,int.MaxValue),textIme.Text,textMestp.Text,poznat);
+                    klub=new Klub(broj,textIme.Text,textMestp.Text,poznat);
                 }
                 else{
                     string nepoznat = "/slike_igraca/nepoznat.png";
-                    klub = new Klub(random.Next(1500, int.MaxValue), textIme.Text, textMestp.Text, nepoznat);
+                    klub = new Klub(broj, textIme.Text, textMestp.Text, nepoznat);
 
                 }
                 if (!ma.Klubovi.Contains(klub))
