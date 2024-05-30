@@ -87,7 +87,13 @@
                             <RowDefinition Height="20*"></RowDefinition>
                         </Grid.RowDefinitions>
                         <TextBlock Grid.Row="1">Kosarkasi:</TextBlock>
-                        <ListView Background="LightYellow" Grid.Row="2" x:Name="ListaKosarkasa" MouseDoubleClick="Lista_MouseDoubleClick"  SelectionChanged="Lista_SelectionChanged" PreviewMouseLeftButtonDown="Lista_PreviewMouseLeftButtonDown" MouseMove="Lista_MouseMove" AllowDrop="True" Drop="Lista_Drop">
+                        <ListView Background="LightYellow" Grid.Row="2" x:Name="ListaKosarkasa" MouseRightButtonDown="Lista_MouseRightButtonUp" MouseDoubleClick="Lista_MouseDoubleClick"  SelectionChanged="Lista_SelectionChanged" PreviewMouseLeftButtonDown="Lista_PreviewMouseLeftButtonDown" MouseMove="Lista_MouseMove" AllowDrop="True" Drop="Lista_Drop">
+                            <ListView.ContextMenu>
+                                <ContextMenu Name="ContextMenu">
+                                    <MenuItem Header="Informacije o igracu" Click="Click_informacije"></MenuItem>
+                                    <MenuItem Header="Izmeni igraca" Click="Click_izmena"></MenuItem>
+                                </ContextMenu>
+                            </ListView.ContextMenu>
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <Grid>

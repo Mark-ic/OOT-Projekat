@@ -40,5 +40,10 @@ namespace Projekat
 
             Slika.Source = slifa;
         }
+
+        private void Dugme_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }

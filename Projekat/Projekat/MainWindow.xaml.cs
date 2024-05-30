@@ -127,7 +127,39 @@ namespace Projekat
                 ii.Show();
             }
         }
+        private void Lista_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            var item = (sender as ListView).InputHitTest(e.GetPosition(ListaKosarkasa)) as FrameworkElement;
+            if (item != null)
+            {
+                var listViewItem = FindAncestor<ListViewItem>(item);
+                if (listViewItem != null)
+                {
+                    listViewItem.Focus();
+                    ContextMenu.IsOpen = true;
+                }
+            }
+        }
 
+        private void Click_izmena(object sender, RoutedEventArgs e)
+        {
+            if (ListaKosarkasa.SelectedItem != null)
+            {
+                var kosarkas = ListaKosarkasa.SelectedItem as Kosarkas;
+                IzmenaIgraca ii = new IzmenaIgraca(kosarkas);
+                ii.Show();
+            }
+        }
+
+        private void Click_informacije(object sender, RoutedEventArgs e)
+        {
+            if (ListaKosarkasa.SelectedItem != null)
+            {
+                var kosarkas = ListaKosarkasa.SelectedItem as Kosarkas;
+                InformacijeIgraca ii = new InformacijeIgraca(kosarkas);
+                ii.Show();
+            }
+        }
 
         private void Stablo_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {

@@ -29,23 +29,23 @@
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Bottom" FontSize="20">Ime</TextBlock>
-        <TextBox Name="Ime" Grid.Row="1" Grid.Column="0" Margin="5 5 5 5" Background="LightGray"></TextBox>
+        <TextBox FontSize="16" Name="Ime" Grid.Row="1" Grid.Column="0" Margin="5 5 5 5" Background="LightGray"></TextBox>
         <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Bottom" FontSize="20">Pozicija</TextBlock>
-        <TextBox Name="Pozicija" Grid.Row="3" Grid.Column="0" Margin="5 5 5 5" Background="LightGray"></TextBox>
+        <TextBox FontSize="16" Name="Pozicija" Grid.Row="3" Grid.Column="0" Margin="5 5 5 5" Background="LightGray"></TextBox>
         <TextBlock Grid.Row="4" Grid.Column="0" VerticalAlignment="Bottom" FontSize="20">Broj utakmica</TextBlock>
-        <TextBox Name="Br_utakmica" Grid.Row="5" Grid.Column="0" Margin="5 5 5 5" Background="LightGray"></TextBox>
+        <TextBox FontSize="16" Name="Br_utakmica" Grid.Row="5" Grid.Column="0" Margin="5 5 5 5" Background="LightGray"></TextBox>
         <TextBlock Grid.Row="0" Grid.Column="2" VerticalAlignment="Bottom" FontSize="20">Prezime</TextBlock>
-        <TextBox Name="Prezime" Grid.Row="1" Grid.Column="2" Margin="5 5 5 5" Background="LightGray"></TextBox>
+        <TextBox FontSize="16" Name="Prezime" Grid.Row="1" Grid.Column="2" Margin="5 5 5 5" Background="LightGray"></TextBox>
         <TextBlock Grid.Row="2" Grid.Column="2" VerticalAlignment="Bottom" FontSize="20">Nacionalnost</TextBlock>
-        <TextBox Name="Nacionalnost" Grid.Row="3" Grid.Column="2" Margin="5 5 5 5" Background="LightGray"></TextBox>
+        <TextBox FontSize="16" Name="Nacionalnost" Grid.Row="3" Grid.Column="2" Margin="5 5 5 5" Background="LightGray"></TextBox>
         <TextBlock Grid.Row="4" Grid.Column="2" VerticalAlignment="Bottom" FontSize="20">Prosek poena</TextBlock>
-        <TextBox Name="Poeni" Grid.Row="5" Grid.Column="2" Margin="5 5 5 5" Background="LightGray"></TextBox>
+        <TextBox FontSize="16" Name="Poeni" Grid.Row="5" Grid.Column="2" Margin="5 5 5 5" Background="LightGray"></TextBox>
         <TextBlock Grid.Row="6" Grid.Column="0" VerticalAlignment="Bottom" FontSize="20">JMBG</TextBlock>
-        <TextBox Name="JMBG" IsReadOnly="True" Grid.Row="7" Grid.Column="0" Margin="5 5 5 5" Background="LightGray"></TextBox>
+        <TextBox FontSize="16" Name="JMBG" IsReadOnly="True" Grid.Row="7" Grid.Column="0" Margin="5 5 5 5" Background="LightGray"></TextBox>
         <TextBlock Grid.Row="6" Grid.Column="2" VerticalAlignment="Bottom" FontSize="20">Broj dresa</TextBlock>
-        <TextBox Name="Br_dresa" Grid.Row="7" Grid.Column="2" Margin="5 5 5 5" Background="LightGray"></TextBox>
+        <TextBox FontSize="16" Name="Br_dresa" Grid.Row="7" Grid.Column="2" Margin="5 5 5 5" Background="LightGray"></TextBox>
         <TextBlock Grid.Row="8" Grid.Column="0" VerticalAlignment="Bottom" FontSize="20">Slika(opcionalno)</TextBlock>
-        <TextBox Name="Slika" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" Margin="5 5 5 5" Background="LightGray"></TextBox>
+        <TextBox FontSize="16" Name="Slika" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" Margin="5 5 5 5" Background="LightGray"></TextBox>
         <Button Grid.Row="9" Grid.Column="2" FontSize="20" Background="Orange" Margin="5 5 5 1" Click="Button_Click" >Izvrsi izmene</Button>
         <Button Name="Izaberi_sliku" Grid.Row="10" Grid.Column="0" FontSize="20" Background="Orange" Margin="5 5 5 0" Click="Izaberi_sliku_Click" >Izaberi sliku</Button>
     </Grid>
