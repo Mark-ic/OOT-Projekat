@@ -118,6 +118,15 @@ namespace Projekat
             DodavanjeIgraca.Show();
         }
 
+        private void Lista_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (ListaKosarkasa.SelectedItem != null)
+            {
+                var kosarkas = ListaKosarkasa.SelectedItem as Kosarkas;
+                InformacijeIgraca ii = new InformacijeIgraca(kosarkas);
+                ii.Show();
+            }
+        }
 
 
         private void Stablo_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)

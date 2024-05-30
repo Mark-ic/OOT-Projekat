@@ -87,7 +87,7 @@
                             <RowDefinition Height="20*"></RowDefinition>
                         </Grid.RowDefinitions>
                         <TextBlock Grid.Row="1">Kosarkasi:</TextBlock>
-                        <ListView Background="LightYellow" Grid.Row="2" x:Name="ListaKosarkasa"  SelectionChanged="Lista_SelectionChanged" PreviewMouseLeftButtonDown="Lista_PreviewMouseLeftButtonDown" MouseMove="Lista_MouseMove" AllowDrop="True" Drop="Lista_Drop">
+                        <ListView Background="LightYellow" Grid.Row="2" x:Name="ListaKosarkasa" MouseDoubleClick="Lista_MouseDoubleClick"  SelectionChanged="Lista_SelectionChanged" PreviewMouseLeftButtonDown="Lista_PreviewMouseLeftButtonDown" MouseMove="Lista_MouseMove" AllowDrop="True" Drop="Lista_Drop">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <Grid>
