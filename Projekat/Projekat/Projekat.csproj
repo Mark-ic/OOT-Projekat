@@ -16,6 +16,7 @@
     <None Remove="logo_kluba\baskonia.png" />
     <None Remove="logo_kluba\bayern.png" />
     <None Remove="logo_kluba\fener.png" />
+    <None Remove="logo_kluba\hemofarm.png" />
     <None Remove="logo_kluba\maccabi.png" />
     <None Remove="logo_kluba\milano.png" />
     <None Remove="logo_kluba\monaco.png" />
@@ -67,6 +68,7 @@
     <Resource Include="logo_kluba\baskonia.png" />
     <Resource Include="logo_kluba\bayern.png" />
     <Resource Include="logo_kluba\fener.png" />
+    <Resource Include="logo_kluba\hemofarm.png" />
     <Resource Include="logo_kluba\maccabi.png" />
     <Resource Include="logo_kluba\milano.png" />
     <Resource Include="logo_kluba\monaco.png" />

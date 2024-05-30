@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,6 +45,22 @@ namespace Projekat
                 MessageBox.Show("Uspesna izmena");
              
                 this.Close();
+            }
+        }
+
+        private void izmeni_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Image files (*.jpg, *.jpeg, *.png)|*.jpg;*.jpeg;*.png|All files (*.*)|*.*";
+
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+
+                string relativePath = "/logo_kluba/" + System.IO.Path.GetFileName(openFileDialog.FileName);
+                klub.LOGO = relativePath;
+                klubSlika.Source = new BitmapImage(new Uri(klub.LOGO, UriKind.RelativeOrAbsolute));
+
             }
         }
     }

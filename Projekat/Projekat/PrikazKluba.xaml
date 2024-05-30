@@ -1,12 +1,11 @@
-﻿<Window x:Class="Projekat.Izmena_Kluba"
+﻿<Window x:Class="Projekat.PrikazKluba"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekat"
         mc:Ignorable="d"
-        Title="Izmena Kluba" Height="450" Width="800"
-        Icon="/teren_mapa/evroliga.png">
+        Title="PrikazKluba" Height="450" Width="800">
     <Grid Background="LightGray">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"></ColumnDefinition>
@@ -23,12 +22,11 @@
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="1" Grid.Column="1" FontSize="22" HorizontalAlignment="Center" VerticalAlignment="Center">IME</TextBlock>
         <TextBlock Grid.Row="2" Grid.Column="1" FontSize="22" HorizontalAlignment="Center" VerticalAlignment="Center">MESTO</TextBlock>
-        <TextBox x:Name="textMestp" Grid.Row="2" Grid.Column="2" FontSize="22" HorizontalAlignment="Center" VerticalAlignment="Center" Background="LightGray" Grid.ColumnSpan="2" ></TextBox>
-        <TextBox x:Name="textIme" Grid.Row="1" Grid.Column="2" FontSize="22" HorizontalAlignment="Center" VerticalAlignment="Center" Background="LightGray" Grid.ColumnSpan="2"></TextBox>
+        <TextBox x:Name="textMestp" Grid.Row="2"  IsReadOnly="True" Grid.Column="2" FontSize="22" HorizontalAlignment="Center" VerticalAlignment="Center" Background="LightGray" Grid.ColumnSpan="2" ></TextBox>
+        <TextBox x:Name="textIme" IsReadOnly="True" Grid.Row="1" Grid.Column="2" FontSize="22" HorizontalAlignment="Center" VerticalAlignment="Center" Background="LightGray" Grid.ColumnSpan="2"></TextBox>
 
         <Image x:Name="klubSlika" Grid.Row="1" Grid.RowSpan="3" Grid.Column="0"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
-        <Button x:Name="Dodaj" Grid.Row="4" Grid.Column="2" Content="izmeni klub" Click="Dodaj_Click" Width="100" Height="40"></Button>
-        <Button x:Name="izmeni" Grid.Row="4" Grid.Column="0" Content="izmeni sliku" Click="izmeni_Click" Width="100" Height="40"></Button>
+        <Button x:Name="zatvori" Grid.Row="4" Grid.Column="1" Content="zatvori" Click="zatvori_Click"  Width="100" Height="40"></Button>
 
     </Grid>
 </Window>

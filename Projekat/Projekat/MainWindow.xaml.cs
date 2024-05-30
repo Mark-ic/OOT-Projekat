@@ -277,14 +277,12 @@ namespace Projekat
                         image.PreviewMouseRightButtonDown += Image_PreviewMouseRightButtonDown;
 
                         ContextMenu contextMenu = new ContextMenu();
-                        MenuItem editMenuItem = new MenuItem { Header = "Izmeni" };
-                        editMenuItem.Click += EditMenuItem_Click;
+
                         MenuItem deleteMenuItem = new MenuItem { Header = "Obriši sa mape" };
                         deleteMenuItem.Click += DeleteMenuItem_Click;
                         MenuItem deleteRemove = new MenuItem { Header = "Obriši iz aplikacije" };
                         deleteRemove.Click += DeleteRemove_Click;
-                        
-                        contextMenu.Items.Add(editMenuItem);
+                       
                         contextMenu.Items.Add(deleteMenuItem);
                         contextMenu.Items.Add(deleteRemove);
 
@@ -625,6 +623,11 @@ namespace Projekat
                     ik.ShowDialog();
                 }
             }
+            if (Stablo.SelectedItem is Klub selectedKlub)
+            {
+                Izmena_Kluba ik = new Izmena_Kluba(selectedKlub);
+                ik.ShowDialog();
+            }
         }
         private void EditMenuItem_Click2(object sender, RoutedEventArgs e)
         {
@@ -641,6 +644,7 @@ namespace Projekat
                     izmena.ShowDialog();
                 }
             }
+
         }
 
         private void DeleteMenuItem_Click(object sender, RoutedEventArgs e)
@@ -762,6 +766,16 @@ namespace Projekat
             comboBox.SelectedIndex = -1;
             txtIME.Text = "";
             txtPREZIME.Text = "";
+        }
+
+        private void Stablo_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if(Stablo.SelectedItem != null)
+            {
+                Klub k = Stablo.SelectedItem as Klub;
+                PrikazKluba pk = new PrikazKluba(k);
+                pk.ShowDialog();
+            }
         }
     }
 }

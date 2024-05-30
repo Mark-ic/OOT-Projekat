@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="EVROLIGA" Height="800" Width="1000"
         Icon="/teren_mapa/evroliga.png"
-        Background="Black">
+        Background="Black" ResizeMode="CanMinimize" MaxWidth="1000" MaxHeight="800">
     <Grid>
         <TabControl>
             <TabItem Header="Spisak kosarkasa" FontSize="20px" Background="LightCyan">
@@ -34,10 +34,10 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left">Pretrazi po imenu</TextBlock>
-                        <TextBox Name="txtIME" Grid.Row="1" Grid.Column="0" TextChanged="searchBox_TextChanged"/>
-                        <TextBlock Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left">Pretrazi po prezimenu</TextBlock>
-                        <TextBox Name="txtPREZIME" Grid.Row="1" Grid.Column="1" TextChanged="searchBox1_TextChanged"/>
+                        <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">Pretrazi po imenu</TextBlock>
+                        <TextBox Name="txtIME" Grid.Row="1" Grid.Column="0" Width="150" TextChanged="searchBox_TextChanged"/>
+                        <TextBlock Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">Pretrazi po prezimenu</TextBlock>
+                        <TextBox Name="txtPREZIME" Grid.Row="1" Grid.Column="1"  Width="150"  TextChanged="searchBox1_TextChanged"/>
                         <TextBlock Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center">Pozicija</TextBlock>
                         <ComboBox Name="comboBox" Grid.Row="1" Grid.Column="2" SelectionChanged="comboBox_SelectionChanged"/>
 
@@ -130,9 +130,9 @@
                     </Grid.ColumnDefinitions>
 
                         <Grid Grid.Column="0">
-                            <TreeView x:Name="Stablo"  SelectedItemChanged="Stablo_SelectedItemChanged"
+                            <TreeView x:Name="Stablo"   SelectedItemChanged="Stablo_SelectedItemChanged"
                                       PreviewMouseLeftButtonDown="Stablo_PreviewMouseLeftButtonDown" MouseMove="Stablo_MouseMove" Background="LightSkyBlue" AllowDrop="True"
-                  Drop="Stablo_Drop">
+                  Drop="Stablo_Drop" MouseDoubleClick="Stablo_MouseDoubleClick">
                                 <TreeView.ItemTemplate>
                                     <HierarchicalDataTemplate ItemsSource="{Binding Klubovi}">
                                         <Expander Header="{Binding NAZIV}">
@@ -142,12 +142,17 @@
                                         </Expander>
                                     </HierarchicalDataTemplate>
                                 </TreeView.ItemTemplate>
-                            </TreeView>
+                            <TreeView.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="Izmeni" Click="EditMenuItem_Click" />
+                                </ContextMenu>
+                            </TreeView.ContextMenu>
+                        </TreeView>
                         </Grid>
                         <Grid Grid.Column="1" Margin="10">
                         <Canvas HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0" x:Name="MapCanvas" IsHitTestVisible="True" AllowDrop="True" DragEnter="MapCanvas_DragEnter" Drop="MapCanvas_Drop" MouseRightButtonDown="MapCanvas_MouseRightButtonDown">
                             <Canvas.Background>
-                                <ImageBrush ImageSource="/teren_mapa/Evropa.png"/>
+                                <ImageBrush  Stretch="Fill" ImageSource="/teren_mapa/Evropa.png"/>
                             </Canvas.Background>
                         </Canvas>
 
