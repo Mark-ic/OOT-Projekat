@@ -128,34 +128,39 @@
                 </Grid>
             </TabItem>
             <!--Treci tab-->
-            <TabItem Header="Informacije" FontSize="20px">
-                <Grid>
+            <TabItem Header="Klubovi" FontSize="20px">
+                <Grid Background="LightGray">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                         <ColumnDefinition Width="2*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-
-                        <Grid Grid.Column="0">
-                            <TreeView x:Name="Stablo"   SelectedItemChanged="Stablo_SelectedItemChanged"
-                                      PreviewMouseLeftButtonDown="Stablo_PreviewMouseLeftButtonDown" MouseMove="Stablo_MouseMove" Background="LightSkyBlue" AllowDrop="True"
-                  Drop="Stablo_Drop" MouseDoubleClick="Stablo_MouseDoubleClick">
-                                <TreeView.ItemTemplate>
-                                    <HierarchicalDataTemplate ItemsSource="{Binding Klubovi}">
-                                        <Expander Header="{Binding NAZIV}">
-                                            <StackPanel>
-                                                <TextBlock Text="{Binding MESTO}" Margin="5" FontWeight="Bold"/>
-                                            </StackPanel>
-                                        </Expander>
-                                    </HierarchicalDataTemplate>
-                                </TreeView.ItemTemplate>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="6*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Column="0" Grid.Row="0" Text="Klubovi" FontSize="35" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                    <Grid Grid.Column="0" Grid.Row="1">
+                        <TreeView x:Name="Stablo"   SelectedItemChanged="Stablo_SelectedItemChanged"
+                          PreviewMouseLeftButtonDown="Stablo_PreviewMouseLeftButtonDown" MouseMove="Stablo_MouseMove" Background="LightSkyBlue" AllowDrop="True"
+      Drop="Stablo_Drop" MouseDoubleClick="Stablo_MouseDoubleClick" >
+                            <TreeView.ItemTemplate>
+                                <HierarchicalDataTemplate ItemsSource="{Binding Klubovi}">
+                                    <Expander Header="{Binding NAZIV}">
+                                        <StackPanel>
+                                            <TextBlock Text="{Binding MESTO}" Margin="5" FontWeight="Bold"/>
+                                        </StackPanel>
+                                    </Expander>
+                                </HierarchicalDataTemplate>
+                            </TreeView.ItemTemplate>
                             <TreeView.ContextMenu>
                                 <ContextMenu>
                                     <MenuItem Header="Izmeni" Click="EditMenuItem_Click" />
                                 </ContextMenu>
                             </TreeView.ContextMenu>
                         </TreeView>
-                        </Grid>
-                        <Grid Grid.Column="1" Margin="10">
+                    </Grid>
+                    <Grid Grid.Column="1" Margin="10" Grid.Row="0" Grid.RowSpan="3">
                         <Canvas HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0" x:Name="MapCanvas" IsHitTestVisible="True" AllowDrop="True" DragEnter="MapCanvas_DragEnter" Drop="MapCanvas_Drop" MouseRightButtonDown="MapCanvas_MouseRightButtonDown">
                             <Canvas.Background>
                                 <ImageBrush  Stretch="Fill" ImageSource="/teren_mapa/Evropa.png"/>
