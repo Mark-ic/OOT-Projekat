@@ -91,7 +91,7 @@ namespace Projekat
                 string igraciFolder = System.IO.Path.Combine(projectDirectory, "slike_igraca");
 
                 string fileExtension = System.IO.Path.GetExtension(selectedFilePath);
-                string fileName = Ime.Text + fileExtension;
+                string fileName = System.IO.Path.GetFileName(selectedFilePath);
                 string savedFilePath = System.IO.Path.Combine(igraciFolder, fileName);
 
                 File.Copy(selectedFilePath, savedFilePath, true);

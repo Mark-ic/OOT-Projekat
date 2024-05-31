@@ -76,7 +76,7 @@
 
                     <Canvas Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0" x:Name="TerenCanvas" IsHitTestVisible="True" AllowDrop="True" DragEnter="TerenCanvas_DragEnter" Drop="TerenCanvas_Drop" MouseRightButtonDown="Slika_MouseRightButtonDown">
                         <Canvas.Background>
-                            <ImageBrush Stretch="None" ImageSource="/teren_mapa/teren.png"/>
+                            <ImageBrush Stretch="Fill" ImageSource="/teren_mapa/teren.png"/>
                         </Canvas.Background>
                     </Canvas>
 
