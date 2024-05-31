@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -23,6 +24,7 @@ namespace Projekat
     {
         bool dodata = false;
         MainViewModel ma;
+        string naziv_slike;
         public DodavanjeKluba(MainViewModel md)
         {
             InitializeComponent();
@@ -37,33 +39,24 @@ namespace Projekat
 
             if (openFileDialog.ShowDialog() == true)
             {
-                string selectedFilePath = openFileDialog.FileName;
-
-                string projectDirectory = AppDomain.CurrentDomain.BaseDirectory;
-                string logoFolder = System.IO.Path.Combine(projectDirectory, "logo_kluba");
-
-                string fileExtension = System.IO.Path.GetExtension(selectedFilePath);
-                string fileName = textIme.Text + fileExtension;
-                string savedFilePath = System.IO.Path.Combine(logoFolder, fileName);
-
-                File.Copy(selectedFilePath, savedFilePath, true);
-
-                string relativePath = "/logo_kluba/" + fileName;
-
-                BitmapImage bitmap = new BitmapImage();
-                bitmap.BeginInit();
-                bitmap.UriSource = new Uri(savedFilePath, UriKind.Absolute);
-                bitmap.EndInit();
-
+                
+                naziv_slike= System.IO.Path.GetFileName(openFileDialog.FileName);
                 dodata = true;
-                //MessageBox.Show("Image saved at: " + relativePath);
+            
             }
         }
         private void Dodaj_Click(object sender, RoutedEventArgs e)
         {
             Klub klub;
-            Random random = new Random();   
-            if(textIme.Text !="" && textMestp.Text!="" )
+            Random random = new Random();
+            Regex regex = new Regex("^[a-zA-Z]+$");
+            bool hasOnlyAlpha = regex.IsMatch(textMestp.Text);
+            if (!hasOnlyAlpha)
+            {
+                MessageBox.Show("Polje mesto sadrzi brojeve!!!!");
+            }
+            else
+            if (textIme.Text !="" && textMestp.Text!="" && hasOnlyAlpha )
             {
                 int broj = random.Next(1500, int.MaxValue);
                 foreach(Klub k in ma.Klubovi)
@@ -75,9 +68,9 @@ namespace Projekat
                 }
                 if (dodata)
                 {
-                    string poznat = "/logo_kluba/"+textIme.Text+".png";
+                    string poznat = "/logo_kluba/" + naziv_slike;
                     //MessageBox.Show("Putanja je: " + poznat);
-                    klub=new Klub(broj,textIme.Text,textMestp.Text,poznat);
+                    klub =new Klub(broj,textIme.Text,textMestp.Text,poznat);
                 }
                 else{
                     string nepoznat = "/slike_igraca/nepoznat.png";
